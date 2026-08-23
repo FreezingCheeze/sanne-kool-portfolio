@@ -26,8 +26,8 @@ const { currentPath } = Astro.props;
 		z-index: 40;
 		height: var(--header-height);
 		background: var(--color-header-bg);
-		backdrop-filter: blur(12px);
-		border-bottom: var(--border-width) solid var(--color-border);
+		color: var(--color-text-on-dark);
+		border-bottom: 0;
 	}
 
 	.inner {
@@ -50,7 +50,8 @@ const { currentPath } = Astro.props;
 	}
 
 	.brand:hover {
-		color: var(--color-text);
+		color: var(--color-text-on-dark);
+		opacity: 0.85;
 	}
 
 	@media (max-width: 40rem) {

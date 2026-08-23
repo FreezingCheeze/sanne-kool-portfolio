@@ -24,19 +24,22 @@ const { href, external = false, download = false } = Astro.props;
 		justify-content: center;
 		min-height: 2.75rem;
 		padding: 0.55rem 1.35rem;
-		border: var(--border-width-strong) solid var(--color-border-strong);
+		border: var(--border-width-strong) solid #ffffff;
+		background: #ffffff;
+		color: var(--color-panel);
 		text-decoration: none;
 		font-size: var(--font-size-sm);
 		font-weight: var(--font-weight-medium);
-		letter-spacing: 0.08em;
-		text-transform: uppercase;
+		letter-spacing: 0.04em;
+		border-radius: var(--radius-md);
 		transition:
 			background-color var(--duration-base) var(--easing),
 			color var(--duration-base) var(--easing);
 	}
 
 	.button-link:hover {
-		background: var(--color-text);
-		color: var(--color-bg);
+		background: #0f172a;
+		color: #ffffff;
+		border-color: #0f172a;
 	}
 </style>

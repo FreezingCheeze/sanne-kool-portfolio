@@ -97,14 +97,14 @@ p:last-child {
 	margin-bottom: 0;
 }
 
-.skip-link {
+	.skip-link {
 	position: absolute;
 	left: var(--space-md);
 	top: 0;
 	transform: translateY(-120%);
 	z-index: 1000;
 	background: var(--color-text);
-	color: var(--color-bg);
+	color: #ffffff;
 	padding: var(--space-sm) var(--space-md);
 	border-radius: var(--radius-md);
 	font-weight: var(--font-weight-medium);
@@ -142,9 +142,10 @@ p:last-child {
 	padding-block: var(--space-3xl) var(--space-xl);
 }
 
-.page-intro h1 {
-	margin-bottom: var(--space-lg);
-}
+	.page-intro h1 {
+		margin-bottom: var(--space-lg);
+		color: var(--color-secondary);
+	}
 
 .missing-note {
 	margin-top: var(--space-xl);

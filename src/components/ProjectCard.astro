@@ -13,18 +13,18 @@ const href = projectHref(project);
 
 <article class="card">
 	<a href={href}>
+		<div class="copy">
+			<h2>{project.data.title}</h2>
+			<p>{project.data.summary}</p>
+			<span class="more">Lees meer</span>
+		</div>
 		<div class="media">
 			<Image
 				src={project.data.coverImage as ImageMetadata}
 				alt={project.data.coverAlt}
 				widths={[360, 540, 800]}
-				sizes="(max-width: 48rem) 100vw, (max-width: 64rem) 50vw, 33vw"
+				sizes="(max-width: 48rem) 100vw, 50vw"
 			/>
-		</div>
-		<div class="copy">
-			<h2>{project.data.title}</h2>
-			<p>{project.data.summary}</p>
-			<span class="more">Lees meer</span>
 		</div>
 	</a>
 </article>
@@ -35,35 +35,16 @@ const href = projectHref(project);
 		text-decoration: none;
 		color: inherit;
 		height: 100%;
-		border: var(--border-width) solid var(--color-border);
-		background: var(--color-bg);
-		transition:
-			transform var(--duration-base) var(--easing),
-			box-shadow var(--duration-base) var(--easing);
+		border-radius: var(--radius-md);
+		overflow: hidden;
+		background: var(--color-bg-muted);
+		transition: box-shadow var(--duration-base) var(--easing);
 	}
 
 	.card a:hover,
 	.card a:focus-visible {
-		transform: translateY(-3px);
 		box-shadow: var(--shadow-soft);
 		color: inherit;
-	}
-
-	.media {
-		aspect-ratio: 4 / 3;
-		overflow: hidden;
-		background: var(--color-bg-muted);
-	}
-
-	.media :global(img) {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		transition: transform var(--duration-slow) var(--easing);
-	}
-
-	.card a:hover .media :global(img) {
-		transform: scale(1.04);
 	}
 
 	.copy {
@@ -71,26 +52,58 @@ const href = projectHref(project);
 		display: grid;
 		gap: var(--space-sm);
 		align-content: start;
+		background: var(--color-bg-muted);
+		color: var(--color-secondary);
+	}
+
+	.media {
+		aspect-ratio: 4 / 3;
+		overflow: hidden;
+		background: #0f172a;
+	}
+
+	.media :global(img) {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
 	}
 
 	h2 {
 		font-size: var(--font-size-lg);
 		margin: 0;
+		color: var(--color-secondary);
 	}
 
 	p {
 		margin: 0;
-		color: var(--color-text-muted);
 		font-size: var(--font-size-sm);
 	}
 
 	.more {
 		margin-top: var(--space-sm);
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 2.5rem;
+		padding: 0.4rem 0.9rem;
+		background: #ffffff;
+		color: var(--color-panel);
 		font-size: var(--font-size-xs);
-		letter-spacing: 0.08em;
+		letter-spacing: 0.06em;
 		text-transform: uppercase;
 		font-weight: var(--font-weight-medium);
-		border-bottom: 1px solid currentColor;
+		border-radius: var(--radius-md);
 		width: fit-content;
+	}
+
+	@media (min-width: 40rem) {
+		.card a {
+			grid-template-columns: 1fr 1fr;
+		}
+
+		.media {
+			aspect-ratio: auto;
+			min-height: 100%;
+		}
 	}
 </style>
