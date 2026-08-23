@@ -1,5 +1,7 @@
 # Sanne Kool — portfolio
 
+Pagina’s of secties toevoegen? Zie de [handleiding voor inhoud](README-inhoud.md).
+
 Statische portfolio-website voor grafisch vormgever **Sanne Kool**. Deze versie is vanaf scratch opgebouwd in Astro en TypeScript.
 
 De site is volledig statisch en klaar voor Cloudflare Pages.
