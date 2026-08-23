@@ -1,6 +1,6 @@
 # Sanne Kool — portfolio
 
-Statische portfolio-website voor grafisch vormgever **Sanne Kool**. Deze versie is vanaf scratch opgebouwd in Astro en TypeScript, als vervanging van de Wix-site, zonder Wix-branding of tracking.
+Statische portfolio-website voor grafisch vormgever **Sanne Kool**. Deze versie is vanaf scratch opgebouwd in Astro en TypeScript.
 
 De site is volledig statisch en klaar voor Cloudflare Pages.
 
