@@ -1,0 +1,155 @@
+---
+import { navigation } from '../data/site';
+
+interface Props {
+	currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+
+function isCurrent(href: string, path: string) {
+	if (href === '/') return path === '/';
+	return path === href || path.startsWith(href);
+}
+---
+
+<div class="mobile">
+	<button
+		class="toggle"
+		type="button"
+		aria-expanded="false"
+		aria-controls="mobile-menu"
+		data-menu-toggle
+	>
+		<span class="visually-hidden">Menu</span>
+		<span class="bars" aria-hidden="true"></span>
+	</button>
+	<nav id="mobile-menu" class="panel" hidden>
+		<ul>
+			{
+				navigation.map((item) => (
+					<li>
+						<a href={item.href} aria-current={isCurrent(item.href, currentPath) ? 'page' : undefined}>
+							{item.label}
+						</a>
+					</li>
+				))
+			}
+		</ul>
+	</nav>
+</div>
+
+<script>
+	const toggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+	const panel = document.getElementById('mobile-menu');
+	if (toggle && panel) {
+		const close = () => {
+			toggle.setAttribute('aria-expanded', 'false');
+			panel.hidden = true;
+			document.body.style.removeProperty('overflow');
+		};
+		toggle.addEventListener('click', () => {
+			const open = toggle.getAttribute('aria-expanded') === 'true';
+			toggle.setAttribute('aria-expanded', String(!open));
+			panel.hidden = open;
+			document.body.style.overflow = open ? '' : 'hidden';
+		});
+		panel.querySelectorAll('a').forEach((link) => link.addEventListener('click', close));
+		document.addEventListener('keydown', (event) => {
+			if (event.key === 'Escape') close();
+		});
+	}
+</script>
+
+<style>
+	.mobile {
+		display: block;
+	}
+
+	.toggle {
+		width: 2.75rem;
+		height: 2.75rem;
+		border: 0;
+		background: transparent;
+		padding: 0;
+		cursor: pointer;
+		display: grid;
+		place-items: center;
+	}
+
+	.bars,
+	.bars::before,
+	.bars::after {
+		display: block;
+		width: 1.35rem;
+		height: 1.5px;
+		background: var(--color-text);
+		position: relative;
+		transition: transform var(--duration-base) var(--easing);
+	}
+
+	.bars::before,
+	.bars::after {
+		content: '';
+		position: absolute;
+		left: 0;
+	}
+
+	.bars::before {
+		top: -6px;
+	}
+
+	.bars::after {
+		top: 6px;
+	}
+
+	.toggle[aria-expanded='true'] .bars {
+		background: transparent;
+	}
+
+	.toggle[aria-expanded='true'] .bars::before {
+		top: 0;
+		transform: rotate(45deg);
+	}
+
+	.toggle[aria-expanded='true'] .bars::after {
+		top: 0;
+		transform: rotate(-45deg);
+	}
+
+	.panel {
+		position: fixed;
+		inset: var(--header-height) 0 0;
+		background: var(--color-bg);
+		padding: var(--space-xl) var(--page-gutter);
+		overflow: auto;
+	}
+
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		gap: var(--space-md);
+	}
+
+	a {
+		display: inline-block;
+		text-decoration: none;
+		font-family: var(--font-serif);
+		font-size: var(--font-size-xl);
+		min-height: 2.75rem;
+		padding-block: var(--space-xs);
+	}
+
+	a[aria-current='page'] {
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
+	}
+
+	@media (min-width: 64rem) {
+		.mobile {
+			display: none;
+		}
+	}
+</style>

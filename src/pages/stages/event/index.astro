@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ProjectCard from '../../../components/ProjectCard.astro';
+import { getListedProjects } from '../../../lib/projects';
+
+const projects = (await getListedProjects('stages')).filter(
+	(project) => project.data.slug === 'oranje-rugby-festijn',
+);
+---
+
+<BaseLayout
+	title="Eventmanagement stages"
+	description="Stage-ervaring binnen Eventmanagement, waaronder het Oranje Rugby Festijn."
+>
+	<section class="page-shell page-intro">
+		<h1>Eventmanagement stages</h1>
+		<p class="lede">
+			Momenteel volg ik de Associate degree Eventmanagement aan de Hogeschool Utrecht (HU). Tijdens deze
+			opleiding doe ik niet alleen kennis op in de lessen, maar krijg ik ook de mogelijkheid om mijn
+			vaardigheden in de praktijk te ontwikkelen. Door middel van verschillende stages en
+			praktijkervaring leer ik hoe het is om mee te werken aan de organisatie en uitvoering van
+			evenementen. Op deze pagina laat ik zien waar ik stage heb gelopen, welke ervaringen ik heb
+			opgedaan en hoe deze hebben bijgedragen aan mijn ontwikkeling.
+		</p>
+	</section>
+	<section class="page-shell page-shell--wide cards">
+		{projects.map((project) => <ProjectCard project={project} />)}
+	</section>
+</BaseLayout>
+
+<style>
+	.cards {
+		display: grid;
+		gap: var(--space-xl);
+		padding-bottom: var(--space-4xl);
+	}
+
+	@media (min-width: 48rem) {
+		.cards {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+</style>

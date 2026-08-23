@@ -1,0 +1,147 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from './BaseLayout.astro';
+import ButtonLink from '../components/ButtonLink.astro';
+import ProjectGallery from '../components/ProjectGallery.astro';
+import type { CollectionEntry } from 'astro:content';
+import { render } from 'astro:content';
+
+interface Props {
+	project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+const { data } = project;
+---
+
+<BaseLayout
+	title={data.title}
+	description={data.summary}
+	ogType="article"
+	canonicalPath={`/projects/${data.slug}/`}
+>
+	<article class="project">
+		<header class="page-shell page-intro">
+			<p class="eyebrow">{data.client ?? data.category}{data.year ? ` · ${data.year}` : ''}</p>
+			<h1>{data.title}</h1>
+			<p class="lede">{data.summary}</p>
+			{
+				data.tools.length > 0 && (
+					<ul class="tools">
+						{data.tools.map((tool) => (
+							<li>{tool}</li>
+						))}
+					</ul>
+				)
+			}
+		</header>
+
+		<div class="hero-cover page-shell page-shell--wide">
+			<Image
+				src={data.coverImage}
+				alt={data.coverAlt}
+				widths={[480, 800, 1200, 1600]}
+				sizes="(max-width: 768px) 100vw, min(86rem, 92vw)"
+				loading="eager"
+				fetchpriority="high"
+			/>
+		</div>
+
+		<div class="page-shell body">
+			<Content />
+			{
+				data.externalUrl && (
+					<p>
+						<ButtonLink href={data.externalUrl} external>
+							Bekijk gerelateerd werk
+						</ButtonLink>
+					</p>
+				)
+			}
+			{
+				data.relatedHref && data.relatedLabel && (
+					<p>
+						<ButtonLink href={data.relatedHref}>{data.relatedLabel}</ButtonLink>
+					</p>
+				)
+			}
+		</div>
+
+		{
+			data.galleries.map((gallery) => (
+				<section class="page-shell page-shell--wide gallery-block">
+					{gallery.title && <h2>{gallery.title}</h2>}
+					<ProjectGallery images={gallery.images} />
+				</section>
+			))
+		}
+
+		<div class="page-shell back">
+			<ButtonLink href={`/${data.category === 'opleiding' ? 'opleiding-mediavormgeving' : data.category}/`}>
+				Terug naar overzicht
+			</ButtonLink>
+		</div>
+	</article>
+</BaseLayout>
+
+<style>
+	.eyebrow {
+		text-transform: uppercase;
+		letter-spacing: var(--letter-spacing-wide);
+		font-size: var(--font-size-xs);
+		font-weight: var(--font-weight-medium);
+		color: var(--color-text-muted);
+		margin-bottom: var(--space-sm);
+	}
+
+	.tools {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-xs);
+		list-style: none;
+		padding: 0;
+		margin: var(--space-lg) 0 0;
+	}
+
+	.tools li {
+		border: var(--border-width) solid var(--color-border);
+		padding: 0.2rem 0.6rem;
+		font-size: var(--font-size-xs);
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+	}
+
+	.hero-cover {
+		margin-bottom: var(--space-2xl);
+	}
+
+	.hero-cover :global(img) {
+		width: 100%;
+		height: auto;
+		border-radius: var(--radius-sm);
+		background: var(--color-bg-muted);
+	}
+
+	.body {
+		max-width: var(--content-width-narrow);
+		margin-bottom: var(--space-2xl);
+		font-size: var(--font-size-md);
+	}
+
+	.body :global(h2) {
+		margin-top: var(--space-2xl);
+	}
+
+	.gallery-block {
+		padding-bottom: var(--space-3xl);
+	}
+
+	.gallery-block h2 {
+		margin-bottom: var(--space-lg);
+	}
+
+	.back {
+		padding-bottom: var(--space-4xl);
+	}
+</style>

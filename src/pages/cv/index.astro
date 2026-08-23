@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ButtonLink from '../../components/ButtonLink.astro';
+import { site } from '../../data/site';
+---
+
+<BaseLayout title="CV" description="Curriculum vitae van Sanne Kool.">
+	<section class="page-shell page-intro">
+		<h1>CV</h1>
+		<p class="lede">Bekijk het curriculum vitae van Sanne Kool in de browser of download het als PDF.</p>
+		<div class="actions">
+			<ButtonLink href={site.cvPath} download>Bekijk PDF</ButtonLink>
+			<a class="download" href={site.cvPath} download="Sanne-Kool-CV.pdf">Download PDF</a>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-md);
+		align-items: center;
+		margin-top: var(--space-lg);
+	}
+
+	.download {
+		min-height: 2.75rem;
+		display: inline-flex;
+		align-items: center;
+	}
+</style>

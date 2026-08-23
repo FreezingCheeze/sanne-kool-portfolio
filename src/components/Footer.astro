@@ -1,0 +1,52 @@
+---
+import SocialLinks from './SocialLinks.astro';
+import { site } from '../data/site';
+---
+
+<footer class="site-footer">
+	<div class="inner">
+		<p class="brand">{site.brand}</p>
+		<SocialLinks />
+		<p class="copy">© {new Date().getFullYear()} door Sanne Kool.</p>
+	</div>
+</footer>
+
+<style>
+	.site-footer {
+		margin-top: auto;
+		border-top: var(--border-width) solid var(--color-border);
+		padding-block: var(--space-xl);
+		background: var(--color-bg-warm);
+	}
+
+	.inner {
+		width: min(var(--content-width-wide), 100% - var(--page-gutter) * 2);
+		margin-inline: auto;
+		display: grid;
+		gap: var(--space-md);
+		align-items: center;
+	}
+
+	.brand {
+		margin: 0;
+		font-size: var(--font-size-xs);
+		letter-spacing: var(--letter-spacing-wide);
+		font-weight: var(--font-weight-medium);
+	}
+
+	.copy {
+		margin: 0;
+		color: var(--color-text-muted);
+		font-size: var(--font-size-sm);
+	}
+
+	@media (min-width: 48rem) {
+		.inner {
+			grid-template-columns: 1fr auto 1fr;
+		}
+
+		.copy {
+			justify-self: end;
+		}
+	}
+</style>

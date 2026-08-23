@@ -1,0 +1,62 @@
+---
+import { site } from '../data/site';
+
+interface Props {
+	compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+---
+
+<ul class:list={['socials', compact && 'compact']}>
+	<li>
+		<a href={site.socials.instagram.href} rel="noreferrer noopener" target="_blank">
+			<span class="visually-hidden">Instagram van Sanne Kool (opent in nieuw tabblad)</span>
+			<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+				<path
+					fill="currentColor"
+					d="M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4zm0 2a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H7zm11 1.25a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zM12 8a4 4 0 1 1 0 8 4 4 0 0 1 0-8zm0 2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"
+				></path>
+			</svg>
+		</a>
+	</li>
+	<li>
+		<a href={site.socials.linkedin.href} rel="noreferrer noopener" target="_blank">
+			<span class="visually-hidden">LinkedIn van Sanne Kool (opent in nieuw tabblad)</span>
+			<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+				<path
+					fill="currentColor"
+					d="M6.5 8.5A1.75 1.75 0 1 1 6.5 5a1.75 1.75 0 0 1 0 3.5zM5 10h3v9H5v-9zm5 0h2.85v1.23h.04c.4-.75 1.37-1.54 2.82-1.54 3.02 0 3.58 1.99 3.58 4.57V19h-3v-4.1c0-.98-.02-2.23-1.36-2.23-1.36 0-1.57 1.06-1.57 2.16V19h-3v-9z"
+				></path>
+			</svg>
+		</a>
+	</li>
+</ul>
+
+<style>
+	.socials {
+		display: flex;
+		gap: var(--space-sm);
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	a {
+		display: grid;
+		place-items: center;
+		width: 2.75rem;
+		height: 2.75rem;
+		color: var(--color-text);
+		text-decoration: none;
+	}
+
+	a:hover {
+		color: var(--color-accent-dark);
+	}
+
+	.compact a {
+		width: 2.25rem;
+		height: 2.25rem;
+	}
+</style>

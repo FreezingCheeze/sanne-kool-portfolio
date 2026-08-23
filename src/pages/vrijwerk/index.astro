@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { getListedProjects } from '../../lib/projects';
+
+const projects = await getListedProjects('vrijwerk');
+---
+
+<BaseLayout
+	title="Vrijwerk"
+	description="Vrij werk van Sanne Kool: Rugbyclub Spakenburg, Kreijne Brandstoffen en Basic & Full Color."
+>
+	<section class="page-shell page-intro">
+		<h1>Vrijwerk</h1>
+		<p class="lede">
+			In mijn vrije tijd blijf ik graag bezig met vormgeving en visuele communicatie. Hier ontdek je
+			projecten zoals een programmaboekje voor Basic & Full Color, truiontwerpen voor Kreijne
+			Brandstoffen en een collectie posters, flyers en Instagram-posts voor Rugbyclub Spakenburg. Klik
+			verder en bekijk hoe ik mijn creativiteit ook buiten school en stages blijf ontwikkelen.
+		</p>
+	</section>
+	<section class="page-shell page-shell--wide cards">
+		{projects.map((project) => <ProjectCard project={project} />)}
+	</section>
+</BaseLayout>
+
+<style>
+	.cards {
+		display: grid;
+		gap: var(--space-xl);
+		padding-bottom: var(--space-4xl);
+	}
+
+	@media (min-width: 48rem) {
+		.cards {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (min-width: 80rem) {
+		.cards {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+	}
+</style>

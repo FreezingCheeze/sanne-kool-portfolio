@@ -1,0 +1,97 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import roc from '../../assets/brands/roc-midden-nederland.jpg';
+import hu from '../../assets/brands/hogeschool-utrecht.png';
+---
+
+<BaseLayout
+	title="Stages"
+	description="Stage-ervaring van Sanne Kool binnen Mediavormgeving en Eventmanagement."
+>
+	<section class="page-shell page-intro">
+		<h1>Stages</h1>
+		<p class="lede">
+			Praktijkervaring speelt een belangrijke rol in mijn ontwikkeling als ontwerper. Tijdens mijn twee
+			opleidingen heb ik stage gelopen bij verschillende bedrijven, waar ik heb gewerkt aan uiteenlopende
+			projecten en mijn creatieve en professionele vaardigheden verder heb ontwikkeld. Kies hieronder een
+			opleiding om meer te lezen over de stages die ik heb gevolgd.
+		</p>
+	</section>
+	<section class="page-shell page-shell--wide split">
+		<article>
+			<a class="block" href="/stages/media/">
+				<Image src={roc} alt="" widths={[200, 400]} sizes="8rem" />
+				<h2>Media opleiding</h2>
+				<p>Benieuwd naar mijn praktijkervaring binnen Mediavormgeving?</p>
+				<p>
+					Ontdek de verschillende stages die ik heb gelopen, de projecten waaraan ik heb gewerkt en hoe
+					deze ervaringen mij hebben geholpen om mijn creatieve vaardigheden verder te ontwikkelen.
+				</p>
+				<span class="more">Lees meer</span>
+			</a>
+		</article>
+		<article>
+			<a class="block" href="/stages/event/">
+				<Image src={hu} alt="" widths={[200, 400]} sizes="8rem" />
+				<h2>Event opleiding</h2>
+				<p>Benieuwd naar mijn praktijkervaring binnen Eventmanagement?</p>
+				<p>
+					Ontdek de verschillende stages die ik heb gelopen, de evenementen waaraan ik heb meegewerkt en
+					hoe deze ervaringen mij hebben geholpen om mij verder te ontwikkelen in mijn toekomst met
+					evenementen.
+				</p>
+				<span class="more">Lees meer</span>
+			</a>
+		</article>
+	</section>
+</BaseLayout>
+
+<style>
+	.split {
+		display: grid;
+		gap: var(--space-xl);
+		padding-bottom: var(--space-4xl);
+	}
+
+	.block {
+		display: grid;
+		gap: var(--space-md);
+		text-decoration: none;
+		color: inherit;
+		border: var(--border-width) solid var(--color-border);
+		padding: var(--space-xl);
+		min-height: 100%;
+		background: var(--color-bg-warm);
+	}
+
+	.block:hover {
+		color: inherit;
+		box-shadow: var(--shadow-soft);
+	}
+
+	.block :global(img) {
+		width: 5.5rem;
+		height: 5.5rem;
+		object-fit: contain;
+	}
+
+	h2 {
+		margin: 0;
+	}
+
+	.more {
+		font-size: var(--font-size-xs);
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		font-weight: var(--font-weight-medium);
+		border-bottom: 1px solid currentColor;
+		width: fit-content;
+	}
+
+	@media (min-width: 48rem) {
+		.split {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+</style>

@@ -1,0 +1,102 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ButtonLink from '../components/ButtonLink.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+import { site } from '../data/site';
+import portrait from '../assets/portrait/sanne-kool.jpg';
+---
+
+<BaseLayout>
+	<section class="hero page-shell">
+		<figure class="portrait">
+			<Image
+				src={portrait}
+				alt="Portret van Sanne Kool"
+				widths={[320, 480, 760, 1100]}
+				sizes="(max-width: 48rem) 80vw, 28rem"
+				loading="eager"
+				fetchpriority="high"
+			/>
+		</figure>
+		<div class="intro">
+			<p class="kicker">Mijn naam is</p>
+			<h1>Sanne Kool.</h1>
+			<p>
+				Ik ben een enthousiaste grafisch vormgever, in 2025 afgestudeerd aan het ROC Midden Nederland.
+				Tijdens mijn opleiding heb ik met veel plezier mijn creativiteit ontwikkeld en mijn liefde voor
+				visuele communicatie ontdekt. Ik haal energie uit het vertalen van ideeën naar een sterke en
+				herkenbare vormgeving.
+			</p>
+			<p>
+				Op dit moment volg ik de opleiding Eventmanager aan de Hogeschool Utrecht (AD-vorm). Hiermee
+				combineer ik mijn passie voor design met de dynamische wereld van evenementen. Ik geloof dat een
+				goed ontworpen beleving begint bij een sterk visueel concept!
+			</p>
+			<div class="actions">
+				<ButtonLink href={site.cvPath} download>CV</ButtonLink>
+				<ButtonLink href="/opleiding-mediavormgeving/">Bekijk werk</ButtonLink>
+				<SocialLinks compact />
+			</div>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.hero {
+		display: grid;
+		gap: var(--space-2xl);
+		padding-block: var(--space-3xl) var(--space-4xl);
+		align-items: center;
+	}
+
+	.portrait {
+		margin: 0;
+		max-width: 28rem;
+		justify-self: center;
+	}
+
+	.portrait :global(img) {
+		width: 100%;
+		aspect-ratio: 4 / 5;
+		object-fit: cover;
+		object-position: 50% 18%;
+		background: var(--color-bg-muted);
+	}
+
+	.kicker {
+		margin-bottom: 0;
+		font-size: var(--font-size-lg);
+		font-family: var(--font-serif);
+		font-weight: var(--font-weight-semibold);
+	}
+
+	h1 {
+		margin-top: 0;
+	}
+
+	.intro p {
+		max-width: 40rem;
+		color: var(--color-secondary);
+	}
+
+	.actions {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: var(--space-md);
+		margin-top: var(--space-xl);
+	}
+
+	@media (min-width: 64rem) {
+		.hero {
+			grid-template-columns: minmax(16rem, 28rem) minmax(0, 1fr);
+			gap: var(--space-4xl);
+			padding-block: var(--space-4xl);
+		}
+
+		.portrait {
+			justify-self: start;
+		}
+	}
+</style>

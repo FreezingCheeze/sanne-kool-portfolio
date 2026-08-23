@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { getListedProjects } from '../../lib/projects';
+
+const projects = await getListedProjects('opleiding');
+---
+
+<BaseLayout
+	title="Opleiding Mediavormgeving"
+	description="Selectie van schoolwerk uit de opleiding Mediavormgever aan het ROC Midden Nederland."
+>
+	<section class="page-shell page-intro">
+		<h1>Opleiding Mediavormgeving</h1>
+		<p class="lede">
+			In 2025 heb ik de opleiding Mediavormgever afgerond op het ROC van Midden Nederland. Op deze
+			pagina kunt u een selectie vinden van mijn schoolwerk. Kijk verder door op de projecten te klikken.
+		</p>
+	</section>
+	<section class="page-shell page-shell--wide cards">
+		{projects.map((project) => <ProjectCard project={project} />)}
+	</section>
+</BaseLayout>
+
+<style>
+	.cards {
+		display: grid;
+		gap: var(--space-xl);
+		padding-bottom: var(--space-4xl);
+	}
+
+	@media (min-width: 48rem) {
+		.cards {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (min-width: 80rem) {
+		.cards {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+	}
+</style>

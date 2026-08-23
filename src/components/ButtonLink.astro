@@ -1,0 +1,42 @@
+---
+interface Props {
+	href: string;
+	external?: boolean;
+	download?: boolean;
+}
+
+const { href, external = false, download = false } = Astro.props;
+---
+
+<a
+	class="button-link"
+	href={href}
+	target={external || download ? '_blank' : undefined}
+	rel={external ? 'noreferrer noopener' : undefined}
+>
+	<slot />
+</a>
+
+<style>
+	.button-link {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 2.75rem;
+		padding: 0.55rem 1.35rem;
+		border: var(--border-width-strong) solid var(--color-border-strong);
+		text-decoration: none;
+		font-size: var(--font-size-sm);
+		font-weight: var(--font-weight-medium);
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		transition:
+			background-color var(--duration-base) var(--easing),
+			color var(--duration-base) var(--easing);
+	}
+
+	.button-link:hover {
+		background: var(--color-text);
+		color: var(--color-bg);
+	}
+</style>

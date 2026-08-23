@@ -1,0 +1,69 @@
+---
+import { navigation } from '../data/site';
+
+interface Props {
+	currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+
+function isCurrent(href: string, path: string) {
+	if (href === '/') return path === '/';
+	return path === href || path.startsWith(href);
+}
+---
+
+<nav class="desktop-nav" aria-label="Hoofdnavigatie">
+	<ul>
+		{
+			navigation.map((item) => (
+				<li>
+					<a href={item.href} aria-current={isCurrent(item.href, currentPath) ? 'page' : undefined}>
+						{item.label}
+					</a>
+				</li>
+			))
+		}
+	</ul>
+</nav>
+
+<style>
+	.desktop-nav {
+		display: none;
+	}
+
+	ul {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: flex-end;
+		gap: clamp(0.75rem, 1.6vw, 1.75rem);
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	a {
+		text-decoration: none;
+		font-size: var(--font-size-sm);
+		font-weight: var(--font-weight-regular);
+		letter-spacing: var(--letter-spacing-nav);
+		padding-block: var(--space-xs);
+		border-bottom: 1px solid transparent;
+	}
+
+	a[aria-current='page'] {
+		border-bottom-color: var(--color-text);
+		font-weight: var(--font-weight-medium);
+	}
+
+	a:hover {
+		border-bottom-color: var(--color-accent);
+		color: var(--color-text);
+	}
+
+	@media (min-width: 64rem) {
+		.desktop-nav {
+			display: block;
+		}
+	}
+</style>

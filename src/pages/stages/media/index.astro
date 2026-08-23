@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ProjectCard from '../../../components/ProjectCard.astro';
+import { getListedProjects } from '../../../lib/projects';
+
+const projects = (await getListedProjects('stages')).filter(
+	(project) => project.data.slug === 'wulterkens' || project.data.slug === 'smeeing-mobility',
+);
+---
+
+<BaseLayout
+	title="Stages Mediavormgeving"
+	description="Stage-ervaring bij Wulterkens en Smeeing Mobility."
+>
+	<section class="page-shell page-intro">
+		<h1>Stages Mediavormgeving</h1>
+		<p class="lede">
+			Bij Wulterkens en Smeeing Mobility heb ik praktijkervaring opgedaan binnen de wereld van
+			mediavormgeving. Door te werken aan echte opdrachten heb ik mijn creatieve, technische en
+			professionele vaardigheden verder ontwikkeld. Ontdek per stage aan welke projecten ik heb gewerkt
+			en wat ik tijdens deze ervaringen heb geleerd.
+		</p>
+	</section>
+	<section class="page-shell page-shell--wide cards">
+		{projects.map((project) => <ProjectCard project={project} />)}
+	</section>
+</BaseLayout>
+
+<style>
+	.cards {
+		display: grid;
+		gap: var(--space-xl);
+		padding-bottom: var(--space-4xl);
+	}
+
+	@media (min-width: 48rem) {
+		.cards {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+</style>
