@@ -124,6 +124,10 @@ p:last-child {
 	width: min(var(--content-width-wide), 100% - var(--page-gutter) * 2);
 }
 
+.page-shell--cards {
+	width: min(100rem, 100% - var(--page-gutter) * 2);
+}
+
 .page-shell--narrow {
 	width: min(var(--content-width-narrow), 100% - var(--page-gutter) * 2);
 }

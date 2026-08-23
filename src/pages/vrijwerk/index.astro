@@ -19,7 +19,7 @@ const projects = await getListedProjects('vrijwerk');
 			verder en bekijk hoe ik mijn creativiteit ook buiten school en stages blijf ontwikkelen.
 		</p>
 	</section>
-	<section class="page-shell page-shell--wide cards">
+	<section class="page-shell page-shell--cards cards">
 		{projects.map((project) => <ProjectCard project={project} />)}
 	</section>
 </BaseLayout>

@@ -17,8 +17,8 @@ const projects = await getListedProjects('opleiding');
 			pagina kunt u een selectie vinden van mijn schoolwerk. Kijk verder door op de projecten te klikken.
 		</p>
 	</section>
-	<section class="page-shell page-shell--wide cards">
-		{projects.map((project) => <ProjectCard project={project} />)}
+	<section class="page-shell page-shell--cards cards">
+		{projects.map((project) => <ProjectCard project={project} uniformHeight />)}
 	</section>
 </BaseLayout>
 
