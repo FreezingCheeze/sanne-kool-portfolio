@@ -31,8 +31,8 @@ const { currentPath } = Astro.props;
 	}
 
 	.inner {
-		width: min(var(--content-width-wide), 100% - var(--page-gutter) * 2);
-		margin-inline: auto;
+		width: 100%;
+		padding-inline: var(--page-gutter);
 		height: 100%;
 		display: flex;
 		align-items: center;
