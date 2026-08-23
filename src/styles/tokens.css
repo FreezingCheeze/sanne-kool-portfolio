@@ -2,7 +2,7 @@
    Derived from the Wix palette (color_11/43/44 blues, white type on panels). */
 
 :root {
-	--color-bg: #2563eb;
+	--color-bg: #3B82F6;
 	--color-primary: var(--color-bg);
 	--color-secondary: #1e3a8a;
 	--color-bg-muted: #bde9f5;
