@@ -20,8 +20,7 @@
 	--color-focus: #1e3a8a;
 	--color-overlay: rgba(15, 23, 42, 0.45);
 
-	--font-serif: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Times New Roman', serif;
-	--font-sans: 'Source Sans 3', 'Avenir Next', 'Segoe UI', Helvetica, Arial, sans-serif;
+	--font-family: Avenir, 'Avenir Next', 'Avenir Next LT Pro', 'Segoe UI', Helvetica, Arial, sans-serif;
 	--font-size-xs: clamp(0.75rem, 0.7rem + 0.2vw, 0.8125rem);
 	--font-size-sm: clamp(0.875rem, 0.82rem + 0.2vw, 0.9375rem);
 	--font-size-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
