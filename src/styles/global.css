@@ -35,7 +35,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	background: var(--color-bg);
-	color: var(--color-text);
+	color: var(--color-text-on-dark);
 	font-family: var(--font-sans);
 	font-size: var(--font-size-base);
 	font-weight: var(--font-weight-light);
@@ -58,7 +58,7 @@ a {
 }
 
 a:hover {
-	color: var(--color-accent-dark);
+	color: var(--color-accent);
 }
 
 :focus-visible {
@@ -138,7 +138,7 @@ p:last-child {
 
 .lede {
 	font-size: var(--font-size-md);
-	color: var(--color-text-muted);
+	color: var(--color-accent);
 	max-width: 46rem;
 }
 
@@ -146,15 +146,16 @@ p:last-child {
 	padding-block: var(--space-3xl) var(--space-xl);
 }
 
-	.page-intro h1 {
+.page-intro h1 {
 		margin-bottom: var(--space-lg);
-		color: var(--color-secondary);
+		color: var(--color-text-on-dark);
 	}
 
 .missing-note {
 	margin-top: var(--space-xl);
 	padding: var(--space-lg);
 	background: var(--color-bg-muted);
+	color: var(--color-text);
 	border-left: 3px solid var(--color-accent);
 }
 

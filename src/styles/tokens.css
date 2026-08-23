@@ -2,23 +2,22 @@
    Derived from the Wix palette (color_11/43/44 blues, white type on panels). */
 
 :root {
-	--color-primary: #2563eb;
+	--color-bg: #2563eb;
+	--color-primary: var(--color-bg);
 	--color-secondary: #1e3a8a;
-	--color-bg: #93c5fd;
 	--color-bg-muted: #bde9f5;
 	--color-bg-warm: #dbeafe;
-	--color-panel: #2563eb;
+	--color-panel: var(--color-bg);
 	--color-panel-soft: #7dd3fc;
 	--color-text: #0f172a;
 	--color-text-muted: #1e3a8a;
 	--color-text-on-dark: #ffffff;
 	--color-accent: #93c5fd;
-	--color-accent-strong: #2563eb;
+	--color-accent-strong: var(--color-bg);
 	--color-accent-dark: #1e40af;
 	--color-border: rgba(255, 255, 255, 0.45);
 	--color-border-strong: #ffffff;
 	--color-focus: #1e3a8a;
-	--color-header-bg: #2563eb;
 	--color-overlay: rgba(15, 23, 42, 0.45);
 
 	--font-serif: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Times New Roman', serif;

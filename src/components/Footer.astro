@@ -16,8 +16,8 @@ import { site } from '../data/site';
 		margin-top: auto;
 		border-top: 0;
 		padding-block: var(--space-xl);
-		background: var(--color-bg-muted);
-		color: var(--color-secondary);
+		background: var(--color-bg);
+		color: var(--color-text-on-dark);
 	}
 
 	.inner {
@@ -37,8 +37,13 @@ import { site } from '../data/site';
 
 	.copy {
 		margin: 0;
-		color: var(--color-text-muted);
+		color: var(--color-accent);
 		font-size: var(--font-size-sm);
+	}
+
+	.inner :global(.socials a:hover) {
+		color: var(--color-text-on-dark);
+		opacity: 0.85;
 	}
 
 	@media (min-width: 48rem) {
