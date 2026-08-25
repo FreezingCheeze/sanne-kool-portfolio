@@ -134,7 +134,10 @@ p:last-child {
 .lede {
 	font-size: var(--font-size-md);
 	color: var(--color-accent);
+	font-weight: var(--font-weight-medium);
 	max-width: 46rem;
+	width: 100%;
+	margin-inline: auto;
 }
 
 .page-intro {
@@ -142,9 +145,12 @@ p:last-child {
 }
 
 .page-intro h1 {
-		margin-bottom: var(--space-lg);
-		color: var(--color-text-on-dark);
-	}
+	margin-bottom: var(--space-lg);
+	margin-inline: auto;
+	max-width: 46rem;
+	width: 100%;
+	color: var(--color-text-on-dark);
+}
 
 .missing-note {
 	margin-top: var(--space-xl);
