@@ -6,6 +6,7 @@ const site = process.env.PUBLIC_SITE_URL ?? 'https://sannekool.pages.dev';
 
 export default defineConfig({
 	site,
+	output: 'static',
 	trailingSlash: 'always',
 	integrations: [sitemap()],
 	devToolbar: { enabled: false },
@@ -27,6 +28,6 @@ export default defineConfig({
 		'/general-9/': '/projects/basic-and-full-color/',
 	},
 	image: {
-	  service: passthroughImageService(),
+		service: passthroughImageService(),
 	},
 });

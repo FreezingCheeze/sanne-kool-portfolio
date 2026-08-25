@@ -39,7 +39,27 @@ npm run preview
 ```
 
 - Build-output: `dist/`
-- Cloudflare Pages: **Build command** `npm run build`, **Output directory** `dist`
+- Hosting is volledig statisch. Voeg **geen** `@astrojs/cloudflare` toe: die adapter maakt een Worker met een `/_image`-API die op Workers 404 geeft.
+- Cloudflare: build command `npm run build`. Workers serveert `dist/` via `wrangler.jsonc`; Pages kan dezelfde map gebruiken.
+
+## How to deploy through GitHub and Cloudflare
+
+De site moet als statische bestanden worden geüpload, niet als Astro-SSR.
+
+1. Push deze repository naar GitHub.
+2. In Cloudflare: koppel de repo aan de Worker **sanne-kool-portfolio** (of een Pages-project).
+3. Build:
+   - Build command: `npm run build`
+   - Assets / output directory: `dist`
+   - Node version: `22`
+4. Gebruik **niet** de Astro SSR / Cloudflare-adapter-preset. `wrangler.jsonc` heeft geen `main`-script, alleen static assets.
+5. Optioneel: environment variable `PUBLIC_SITE_URL` = `https://jouwdomein.nl` (zonder trailing slash) voor canonical URLs, Open Graph en de sitemap. Herbouw na een wijziging.
+
+Lokaal publiceren (na `npx wrangler login`):
+
+```bash
+npm run deploy
+```
 
 ## Project structure
 
@@ -122,19 +142,9 @@ Vervang `public/cv/sanne-kool-cv.pdf`. De homepage-knop, `/cv/` en `site.cvPath`
 
 Pas `site.socials` aan in `src/data/site.ts`.
 
-## How to deploy through GitHub and Cloudflare Pages
-
-1. Push deze repository naar GitHub.
-2. In Cloudflare Pages: **Create** → koppel de GitHub-repo.
-3. Framework preset: Astro, of handmatig:
-   - Build command: `npm run build`
-   - Output directory: `dist`
-   - Node version: `22`
-4. Optioneel environment variable: `PUBLIC_SITE_URL` = `https://jouwdomein.nl` (zonder trailing slash). Deze waarde wordt gebruikt voor canonical URLs, Open Graph en de sitemap. Zet hem ook in `astro.config.mjs` via dezelfde variabele; herbouw na een wijziging.
-
 ## How to connect a custom domain
 
-In Cloudflare Pages: **Custom domains** → voeg het domein toe en volg de DNS-instructies. Zet daarna `PUBLIC_SITE_URL` op het definitieve https-adres en deploy opnieuw.
+In Cloudflare: **Custom domains** → voeg het domein toe en volg de DNS-instructies. Zet daarna `PUBLIC_SITE_URL` op het definitieve https-adres en deploy opnieuw.
 
 ## Content or assets still missing
 
