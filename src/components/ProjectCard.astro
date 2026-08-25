@@ -96,6 +96,16 @@ const href = projectHref(project);
 		font-weight: var(--font-weight-medium);
 		border-radius: var(--radius-md);
 		width: fit-content;
+		transform-origin: center;
+		transition:
+			transform var(--duration-base) var(--easing),
+			box-shadow var(--duration-base) var(--easing);
+	}
+
+	.card a:hover .more,
+	.card a:focus-visible .more {
+		transform: scale(1.08) translateY(-2px);
+		box-shadow: 0 8px 18px rgba(30, 58, 138, 0.22);
 	}
 
 	@media (min-width: 40rem) {
