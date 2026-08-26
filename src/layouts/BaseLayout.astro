@@ -23,6 +23,7 @@ const {
 	jsonLd,
 } = Astro.props;
 
+const isHome = Astro.url.pathname === '/';
 const pageTitle = title ? `${title} | ${site.name}` : site.title;
 const canonical = new URL(canonicalPath, Astro.site);
 const ogImageUrl = new URL(ogImage, Astro.site);
@@ -63,7 +64,7 @@ const personLd = {
 		<meta name="generator" content={Astro.generator} />
 		<script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd ?? personLd)} />
 	</head>
-	<body>
+	<body class:list={[isHome && 'is-home']}>
 		<Header currentPath={Astro.url.pathname} />
 		<main id="main">
 			<slot />

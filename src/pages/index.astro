@@ -8,13 +8,13 @@ import portrait from '../assets/portrait/sanne-kool.jpg';
 ---
 
 <BaseLayout>
-	<section class="hero page-shell page-shell--wide">
+	<section class="hero">
 		<figure class="portrait">
 			<Image
 				src={portrait}
 				alt="Portret van Sanne Kool"
 				widths={[320, 480, 760, 1100]}
-				sizes="(max-width: 48rem) 80vw, 28rem"
+				sizes="(max-width: 48rem) 80vw, 42vw"
 				loading="eager"
 				fetchpriority="high"
 			/>
@@ -45,19 +45,20 @@ import portrait from '../assets/portrait/sanne-kool.jpg';
 
 <style>
 	.hero {
+		--home-inner-radius: clamp(2.5rem, 6vw, 4.5rem);
+		flex: 1;
 		display: grid;
-		gap: var(--space-lg);
-		padding-block: var(--space-2xl) var(--space-4xl);
 		align-items: stretch;
+		width: 100%;
+		min-height: calc(100dvh - var(--header-height));
 	}
 
 	.portrait {
 		margin: 0;
-		background: var(--color-bg-muted);
+		background: transparent;
 		display: grid;
 		place-items: center;
-		padding: var(--space-xl);
-		border-radius: var(--radius-md);
+		padding: clamp(1.5rem, 5vw, 4rem);
 	}
 
 	.portrait :global(img) {
@@ -65,14 +66,16 @@ import portrait from '../assets/portrait/sanne-kool.jpg';
 		aspect-ratio: 4 / 5;
 		object-fit: cover;
 		object-position: 50% 18%;
-		border-radius: var(--radius-md);
+		border-radius: var(--radius-lg);
+		box-shadow: var(--shadow-soft);
 	}
 
 	.intro {
+		position: relative;
 		background: var(--color-panel);
 		color: var(--color-text-on-dark);
-		padding: clamp(1.5rem, 4vw, 3rem);
-		border-radius: var(--radius-md);
+		padding: clamp(1.75rem, 5vw, 4.5rem) clamp(1.5rem, 5vw, 4rem);
+		border-bottom-left-radius: var(--home-inner-radius);
 		display: grid;
 		align-content: center;
 	}
@@ -112,9 +115,24 @@ import portrait from '../assets/portrait/sanne-kool.jpg';
 
 	@media (min-width: 64rem) {
 		.hero {
-			grid-template-columns: minmax(16rem, 1fr) minmax(0, 1.1fr);
-			gap: var(--space-lg);
-			padding-block: var(--space-3xl) var(--space-4xl);
+			grid-template-columns: minmax(16rem, 1fr) minmax(0, 1fr);
+			min-height: 0;
+		}
+
+		.intro::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: var(--home-inner-radius);
+			height: var(--home-inner-radius);
+			transform: translateX(-100%);
+			background: radial-gradient(
+				circle at 0 100%,
+				transparent calc(var(--home-inner-radius) - 0.5px),
+				var(--color-panel) calc(var(--home-inner-radius) - 0.5px)
+			);
+			pointer-events: none;
 		}
 	}
 </style>

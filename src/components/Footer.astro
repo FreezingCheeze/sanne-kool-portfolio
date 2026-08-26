@@ -20,6 +20,11 @@ import { site } from '../data/site';
 		color: var(--color-text-on-dark);
 	}
 
+	:global(body.is-home) .site-footer {
+		background: var(--color-bg-muted);
+		color: var(--color-text);
+	}
+
 	.inner {
 		width: min(var(--content-width-wide), 100% - var(--page-gutter) * 2);
 		margin-inline: auto;
@@ -41,9 +46,18 @@ import { site } from '../data/site';
 		font-size: var(--font-size-sm);
 	}
 
+	:global(body.is-home) .copy {
+		color: var(--color-text-muted);
+	}
+
 	.inner :global(.socials a:hover) {
 		color: var(--color-text-on-dark);
 		opacity: 0.85;
+	}
+
+	:global(body.is-home) .inner :global(.socials a:hover) {
+		color: var(--color-accent-dark);
+		opacity: 1;
 	}
 
 	@media (min-width: 48rem) {

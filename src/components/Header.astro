@@ -30,6 +30,10 @@ const { currentPath } = Astro.props;
 		border-bottom: 0;
 	}
 
+	:global(body.is-home) .site-header {
+		position: relative;
+	}
+
 	.inner {
 		width: 100%;
 		padding-inline: var(--page-gutter);

@@ -38,6 +38,16 @@ body {
 	line-height: var(--line-height-body);
 }
 
+body.is-home {
+	background: var(--color-bg-muted);
+}
+
+body.is-home #main {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+}
+
 img,
 picture,
 video,
