@@ -67,6 +67,17 @@ const { data } = project;
 			))
 		}
 
+		{
+			data.videos.map((video) => (
+				<section class="page-shell page-shell--cards gallery-block">
+					{video.title && <h2>{video.title}</h2>}
+					<video class="project-video" controls playsinline preload="metadata" aria-label={video.alt}>
+						<source src={video.src} type="video/mp4" />
+					</video>
+				</section>
+			))
+		}
+
 		<div class="page-shell page-shell--cards back">
 			<ButtonLink href={`/${data.category === 'opleiding' ? 'opleiding-mediavormgeving' : data.category}/`}>
 				Terug naar overzicht
@@ -132,6 +143,11 @@ const { data } = project;
 
 	.gallery-block h2 {
 		margin-bottom: var(--space-md);
+	}
+
+	.project-video {
+		width: 100%;
+		background: var(--color-bg-muted);
 	}
 
 	.back {
