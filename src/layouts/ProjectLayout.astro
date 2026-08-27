@@ -25,7 +25,9 @@ const { data } = project;
 		<header class="page-shell page-intro">
 			<p class="eyebrow">{data.client ?? data.category}{data.year ? ` · ${data.year}` : ''}</p>
 			<h1>{data.title}</h1>
-			<p class="lede">{data.summary}</p>
+			<div class="lede">
+				<Content />
+			</div>
 			{
 				data.tools.length > 0 && (
 					<ul class="tools">
@@ -38,7 +40,6 @@ const { data } = project;
 		</header>
 
 		<div class="page-shell body">
-			<Content />
 			{
 				data.externalUrl && (
 					<p>
@@ -112,14 +113,14 @@ const { data } = project;
 		background: var(--color-bg-muted);
 	}
 
+	.lede :global(h2) {
+		margin-top: var(--space-2xl);
+	}
+
 	.body {
 		max-width: var(--content-width-narrow);
 		margin-bottom: var(--space-2xl);
 		font-size: var(--font-size-md);
-	}
-
-	.body :global(h2) {
-		margin-top: var(--space-2xl);
 	}
 
 	.gallery-block {
