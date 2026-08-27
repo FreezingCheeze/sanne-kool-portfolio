@@ -147,19 +147,10 @@ p:last-child {
 	font-weight: var(--font-weight-medium);
 	max-width: 46rem;
 	width: 100%;
-	margin-inline: auto;
 }
 
 .page-intro {
 	padding-block: var(--space-3xl) var(--space-xl);
-}
-
-.page-intro h1 {
-	margin-bottom: var(--space-lg);
-	margin-inline: auto;
-	max-width: 46rem;
-	width: 100%;
-	color: var(--color-text-on-dark);
 }
 
 .missing-note {

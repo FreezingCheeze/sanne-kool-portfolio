@@ -37,17 +37,6 @@ const { data } = project;
 			}
 		</header>
 
-		<div class="hero-cover page-shell page-shell--wide">
-			<Image
-				src={data.coverImage}
-				alt={data.coverAlt}
-				widths={[480, 800, 1200, 1600]}
-				sizes="(max-width: 768px) 100vw, min(86rem, 92vw)"
-				loading="eager"
-				fetchpriority="high"
-			/>
-		</div>
-
 		<div class="page-shell body">
 			<Content />
 			{
