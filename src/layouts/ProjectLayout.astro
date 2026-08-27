@@ -22,7 +22,7 @@ const { data } = project;
 	canonicalPath={`/projects/${data.slug}/`}
 >
 	<article class="project">
-		<header class="page-shell page-intro">
+		<header class="page-shell page-shell--cards page-intro">
 			<p class="eyebrow">{data.client ?? data.category}{data.year ? ` · ${data.year}` : ''}</p>
 			<h1>{data.title}</h1>
 			<div class="lede">
@@ -39,7 +39,7 @@ const { data } = project;
 			}
 		</header>
 
-		<div class="page-shell body">
+		<div class="page-shell page-shell--cards body">
 			{
 				data.externalUrl && (
 					<p>
@@ -60,14 +60,14 @@ const { data } = project;
 
 		{
 			data.galleries.map((gallery) => (
-				<section class="page-shell page-shell--wide gallery-block">
+				<section class="page-shell page-shell--cards gallery-block">
 					{gallery.title && <h2>{gallery.title}</h2>}
 					<ProjectGallery images={gallery.images} />
 				</section>
 			))
 		}
 
-		<div class="page-shell back">
+		<div class="page-shell page-shell--cards back">
 			<ButtonLink href={`/${data.category === 'opleiding' ? 'opleiding-mediavormgeving' : data.category}/`}>
 				Terug naar overzicht
 			</ButtonLink>
@@ -113,12 +113,15 @@ const { data } = project;
 		background: var(--color-bg-muted);
 	}
 
+	.lede {
+		max-width: none;
+	}
+
 	.lede :global(h2) {
 		margin-top: var(--space-2xl);
 	}
 
 	.body {
-		max-width: var(--content-width-narrow);
 		margin-bottom: var(--space-2xl);
 		font-size: var(--font-size-md);
 	}
@@ -128,10 +131,14 @@ const { data } = project;
 	}
 
 	.gallery-block h2 {
-		margin-bottom: var(--space-lg);
+		margin-bottom: var(--space-md);
 	}
 
 	.back {
 		padding-bottom: var(--space-4xl);
+	}
+
+	.page-shell--cards {
+		width: min(75rem, 100% - var(--page-gutter) * 2);
 	}
 </style>

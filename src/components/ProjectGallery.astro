@@ -7,34 +7,137 @@ interface Props {
 }
 
 const { images } = Astro.props;
+const canCycle = images.length > 1;
 ---
 
-<ul class="gallery">
-	{
-		images.map((image, index) => (
-			<li>
-				<figure>
-					<Image
-						src={image.src}
-						alt={image.alt}
-						widths={[400, 700, 1100]}
-						sizes="(max-width: 48rem) 100vw, (max-width: 64rem) 50vw, 33vw"
-						loading={index < 2 ? 'eager' : 'lazy'}
-					/>
-				</figure>
-			</li>
-		))
+{
+	images.length > 0 && (
+		<div class="gallery" data-gallery>
+			{
+				canCycle && (
+					<button type="button" class="nav nav--prev" data-gallery-prev aria-label="Vorige afbeeldingen">
+						<svg viewBox="0 0 24 24" aria-hidden="true">
+							<path d="M15 5 8 12l7 7" />
+						</svg>
+					</button>
+				)
+			}
+			<ul class="track" data-gallery-track>
+				{images.map((image, index) => (
+					<li class="slide" data-slide>
+						<figure>
+							<Image
+								src={image.src}
+								alt={image.alt}
+								widths={[240, 368, 560]}
+								sizes="(max-width: 30rem) 80vw, 23rem"
+								loading={index < 3 ? 'eager' : 'lazy'}
+							/>
+						</figure>
+					</li>
+				))}
+			</ul>
+			{
+				canCycle && (
+					<button type="button" class="nav nav--next" data-gallery-next aria-label="Volgende afbeeldingen">
+						<svg viewBox="0 0 24 24" aria-hidden="true">
+							<path d="m9 5 7 7-7 7" />
+						</svg>
+					</button>
+				)
+			}
+		</div>
+	)
+}
+
+<script>
+	function initGallery(root: HTMLElement) {
+		const track = root.querySelector<HTMLElement>('[data-gallery-track]');
+		const prev = root.querySelector<HTMLButtonElement>('[data-gallery-prev]');
+		const next = root.querySelector<HTMLButtonElement>('[data-gallery-next]');
+		if (!track || !prev || !next) return;
+
+		const slides = [...track.querySelectorAll<HTMLElement>('[data-slide]')];
+		if (slides.length < 2) return;
+
+		const prefersReducedMotion = () =>
+			window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+		const updateButtons = () => {
+			const maxScroll = track.scrollWidth - track.clientWidth;
+			const hasOverflow = maxScroll > 1;
+			prev.hidden = !hasOverflow;
+			next.hidden = !hasOverflow;
+			if (!hasOverflow) return;
+			prev.disabled = track.scrollLeft <= 1;
+			next.disabled = track.scrollLeft >= maxScroll - 1;
+		};
+
+		track.querySelectorAll('img').forEach((image) => {
+			if (!image.complete) image.addEventListener('load', updateButtons);
+		});
+		new ResizeObserver(updateButtons).observe(track);
+
+		const scrollBySlide = (direction: number) => {
+			const slide = slides[0];
+			const styles = getComputedStyle(track);
+			const gap = Number.parseFloat(styles.columnGap || styles.gap) || 0;
+			const step = slide.getBoundingClientRect().width + gap;
+			track.scrollBy({
+				left: direction * step,
+				behavior: prefersReducedMotion() ? 'auto' : 'smooth',
+			});
+		};
+
+		prev.addEventListener('click', () => scrollBySlide(-1));
+		next.addEventListener('click', () => scrollBySlide(1));
+		track.addEventListener('scroll', updateButtons, { passive: true });
+		window.addEventListener('resize', updateButtons);
+		root.addEventListener('keydown', (event) => {
+			if (event.key === 'ArrowLeft') {
+				event.preventDefault();
+				scrollBySlide(-1);
+			}
+			if (event.key === 'ArrowRight') {
+				event.preventDefault();
+				scrollBySlide(1);
+			}
+		});
+		updateButtons();
 	}
-</ul>
+
+	document.querySelectorAll<HTMLElement>('[data-gallery]').forEach(initGallery);
+</script>
 
 <style>
 	.gallery {
+		position: relative;
+		width: 100%;
+	}
+
+	.track {
+		display: flex;
+		align-items: flex-start;
+		gap: var(--space-md);
 		list-style: none;
 		margin: 0;
 		padding: 0;
-		display: grid;
-		gap: var(--space-md);
-		grid-template-columns: 1fr;
+		overflow-x: auto;
+		overscroll-behavior-x: contain;
+		scroll-snap-type: x proximity;
+		scroll-behavior: smooth;
+		scrollbar-width: none;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	.track::-webkit-scrollbar {
+		display: none;
+	}
+
+	.slide {
+		flex: 0 0 min(23rem, 80%);
+		width: min(23rem, 80%);
+		scroll-snap-align: start;
 	}
 
 	figure {
@@ -47,15 +150,60 @@ const { images } = Astro.props;
 		height: auto;
 	}
 
-	@media (min-width: 40rem) {
-		.gallery {
-			grid-template-columns: repeat(2, minmax(0, 1fr));
-		}
+	.nav[hidden] {
+		display: none;
 	}
 
-	@media (min-width: 64rem) {
-		.gallery {
-			grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
-		}
+	.nav {
+		position: absolute;
+		top: 50%;
+		z-index: 2;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.75rem;
+		height: 2.75rem;
+		padding: 0;
+		border: var(--border-width-strong) solid #ffffff;
+		background: #ffffff;
+		color: var(--color-panel);
+		border-radius: var(--radius-md);
+		box-shadow: var(--shadow-soft);
+		cursor: pointer;
+		transform: translateY(-50%);
+		transition:
+			background-color var(--duration-base) var(--easing),
+			color var(--duration-base) var(--easing),
+			border-color var(--duration-base) var(--easing),
+			opacity var(--duration-base) var(--easing);
+	}
+
+	.nav--prev {
+		left: var(--space-xs);
+	}
+
+	.nav--next {
+		right: var(--space-xs);
+	}
+
+	.nav:hover:not(:disabled) {
+		background: #0f172a;
+		color: #ffffff;
+		border-color: #0f172a;
+	}
+
+	.nav:disabled {
+		opacity: 0.4;
+		cursor: default;
+	}
+
+	.nav svg {
+		width: 1.25rem;
+		height: 1.25rem;
+		fill: none;
+		stroke: currentColor;
+		stroke-width: 2;
+		stroke-linecap: round;
+		stroke-linejoin: round;
 	}
 </style>
