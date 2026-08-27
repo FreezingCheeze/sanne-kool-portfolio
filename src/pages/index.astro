@@ -97,16 +97,11 @@ import portrait from '../assets/portrait/sanne-kool.jpg';
 
 	.actions {
 		display: flex;
-		flex-wrap: wrap;
+		flex-direction: column;
 		align-items: stretch;
-		justify-content: center;
 		gap: var(--space-md);
 		margin: var(--space-3xl) 0 0;
 		width: min(100%, 40rem);
-	}
-
-	.actions :global(.button-link) {
-		flex: 1 1 12rem;
 	}
 
 	@media (min-width: 64rem) {
