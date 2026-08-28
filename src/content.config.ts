@@ -22,6 +22,16 @@ const projects = defineCollection({
 			parent: z.string().optional(),
 			relatedLabel: z.string().optional(),
 			relatedHref: z.string().optional(),
+			cards: z
+				.array(
+					z.object({
+						title: z.string(),
+						summary: z.string(),
+						image: image(),
+						imageAlt: z.string(),
+					}),
+				)
+				.default([]),
 			videos: z
 				.array(
 					z.object({

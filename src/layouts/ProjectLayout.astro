@@ -2,9 +2,11 @@
 import { Image } from 'astro:assets';
 import BaseLayout from './BaseLayout.astro';
 import ButtonLink from '../components/ButtonLink.astro';
+import ProjectCard from '../components/ProjectCard.astro';
 import ProjectGallery from '../components/ProjectGallery.astro';
 import type { CollectionEntry } from 'astro:content';
 import { render } from 'astro:content';
+import type { ImageMetadata } from 'astro';
 
 interface Props {
 	project: CollectionEntry<'projects'>;
@@ -13,6 +15,10 @@ interface Props {
 const { project } = Astro.props;
 const { Content } = await render(project);
 const { data } = project;
+const showCards = data.cards.length > 0;
+const backHref = data.parent
+	? `/projects/${data.parent}/`
+	: `/${data.category === 'opleiding' ? 'opleiding-mediavormgeving' : data.category}/`;
 ---
 
 <BaseLayout
@@ -39,32 +45,55 @@ const { data } = project;
 			}
 		</header>
 
-		<div class="page-shell page-shell--cards body">
-			{
-				data.externalUrl && (
-					<p>
-						<ButtonLink href={data.externalUrl} external>
-							Bekijk gerelateerd werk
-						</ButtonLink>
-					</p>
-				)
-			}
-			{
-				data.relatedHref && data.relatedLabel && (
-					<p>
-						<ButtonLink href={data.relatedHref}>{data.relatedLabel}</ButtonLink>
-					</p>
-				)
-			}
-		</div>
+		{
+			(data.externalUrl || (data.relatedHref && data.relatedLabel)) && (
+				<div class="page-shell page-shell--cards body">
+					{
+						data.externalUrl && (
+							<p>
+								<ButtonLink href={data.externalUrl} external>
+									Bekijk gerelateerd werk
+								</ButtonLink>
+							</p>
+						)
+					}
+					{
+						data.relatedHref && data.relatedLabel && (
+							<p>
+								<ButtonLink href={data.relatedHref}>{data.relatedLabel}</ButtonLink>
+							</p>
+						)
+					}
+				</div>
+			)
+		}
 
 		{
-			data.galleries.map((gallery) => (
-				<section class="page-shell page-shell--cards gallery-block">
-					{gallery.title && <h2>{gallery.title}</h2>}
-					<ProjectGallery images={gallery.images} imageScale={gallery.imageScale} uniform={gallery.uniform} />
+			showCards && (
+				<section class="page-shell page-shell--cards cards">
+					{data.cards.map((card) => (
+						<ProjectCard
+							card={{
+								title: card.title,
+								summary: card.summary,
+								image: card.image as ImageMetadata,
+								imageAlt: card.imageAlt,
+							}}
+							uniformHeight
+						/>
+					))}
 				</section>
-			))
+			)
+		}
+
+		{
+			!showCards &&
+				data.galleries.map((gallery) => (
+					<section class="page-shell page-shell--cards gallery-block">
+						{gallery.title && <h2>{gallery.title}</h2>}
+						<ProjectGallery images={gallery.images} imageScale={gallery.imageScale} uniform={gallery.uniform} />
+					</section>
+				))
 		}
 
 		{
@@ -79,9 +108,7 @@ const { data } = project;
 		}
 
 		<div class="page-shell page-shell--cards back">
-			<ButtonLink href={`/${data.category === 'opleiding' ? 'opleiding-mediavormgeving' : data.category}/`}>
-				Terug naar overzicht
-			</ButtonLink>
+			<ButtonLink href={backHref}>Terug naar overzicht</ButtonLink>
 		</div>
 	</article>
 </BaseLayout>
@@ -154,7 +181,23 @@ const { data } = project;
 		padding-bottom: var(--space-4xl);
 	}
 
+	.cards {
+		display: grid;
+		gap: var(--space-xl);
+		padding-bottom: var(--space-4xl);
+	}
+
+	@media (min-width: 48rem) {
+		.cards {
+			grid-template-columns: 1fr;
+		}
+	}
+
 	.page-shell--cards {
 		width: min(75rem, 100% - var(--page-gutter) * 2);
+	}
+
+	.cards.page-shell--cards {
+		width: min(100rem, 100% - var(--page-gutter) * 2);
 	}
 </style>

@@ -3,37 +3,67 @@ import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 import { projectHref, type Project } from '../lib/projects';
 
+interface StaticCard {
+	title: string;
+	summary: string;
+	image: ImageMetadata;
+	imageAlt: string;
+}
+
 interface Props {
-	project: Project;
+	project?: Project;
+	card?: StaticCard;
 	uniformHeight?: boolean;
 }
 
-const { project, uniformHeight = false } = Astro.props;
-const href = projectHref(project);
+const { project, card, uniformHeight = false } = Astro.props;
+const title = project?.data.title ?? card?.title ?? '';
+const summary = project?.data.summary ?? card?.summary ?? '';
+const image = (project?.data.coverImage ?? card?.image) as ImageMetadata;
+const imageAlt = project?.data.coverAlt ?? card?.imageAlt ?? '';
+const href = project ? projectHref(project) : undefined;
+const slug = project?.data.slug;
 ---
 
-<article class:list={['card', { 'card--uniform': uniformHeight }]}>
-	<a href={href}>
-		<div class="copy">
-			<div class="headline">
-				<h2>{project.data.title}</h2>
-				<p>{project.data.summary}</p>
+<article class:list={['card', { 'card--uniform': uniformHeight, 'card--static': !href }]}>
+	{
+		href ? (
+			<a class="inner" href={href}>
+				<div class="copy">
+					<div class="headline">
+						<h2>{title}</h2>
+						<p>{summary}</p>
+					</div>
+					<span class="more">Lees meer</span>
+				</div>
+				<div class:list={['media', slug && `media--${slug}`]}>
+					<Image src={image} alt={imageAlt} widths={[360, 540, 800, 1200]} sizes="(max-width: 48rem) 100vw, 50vw" />
+				</div>
+			</a>
+		) : (
+			<div class="inner">
+				<div class="copy">
+					<div class="headline">
+						<h2>{title}</h2>
+						<p>{summary}</p>
+					</div>
+				</div>
+				<div class="media">
+					<Image
+						src={image}
+						alt={imageAlt}
+						widths={[360, 540, 800, 1200]}
+						sizes="(max-width: 48rem) 100vw, 50vw"
+						loading="eager"
+					/>
+				</div>
 			</div>
-			<span class="more">Lees meer</span>
-		</div>
-		<div class:list={['media', `media--${project.data.slug}`]}>
-			<Image
-				src={project.data.coverImage as ImageMetadata}
-				alt={project.data.coverAlt}
-				widths={[360, 540, 800, 1200]}
-				sizes="(max-width: 48rem) 100vw, 50vw"
-			/>
-		</div>
-	</a>
+		)
+	}
 </article>
 
 <style>
-	.card a {
+	.card .inner {
 		display: grid;
 		align-items: stretch;
 		text-decoration: none;
@@ -42,11 +72,14 @@ const href = projectHref(project);
 		border-radius: var(--radius-md);
 		overflow: hidden;
 		background: var(--color-bg-muted);
+	}
+
+	a.inner {
 		transition: box-shadow var(--duration-base) var(--easing);
 	}
 
-	.card a:hover,
-	.card a:focus-visible {
+	a.inner:hover,
+	a.inner:focus-visible {
 		box-shadow: var(--shadow-soft);
 		color: inherit;
 	}
@@ -62,9 +95,12 @@ const href = projectHref(project);
 		height: 100%;
 		min-height: 100%;
 		padding: var(--space-lg);
-		padding-bottom: calc(var(--space-lg) + 2.5rem + var(--space-sm));
 		background: var(--color-bg-muted);
 		color: var(--color-secondary);
+	}
+
+	a.inner .copy {
+		padding-bottom: calc(var(--space-lg) + 2.5rem + var(--space-sm));
 	}
 
 	.headline {
@@ -85,6 +121,28 @@ const href = projectHref(project);
 		height: 100%;
 		object-fit: cover;
 		object-position: center;
+	}
+
+	.card--static .media {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		box-sizing: border-box;
+		padding-block: var(--space-lg);
+		padding-inline: 0 var(--space-lg);
+		background: var(--color-bg-muted);
+	}
+
+	.card--static .media :global(img) {
+		width: auto;
+		height: auto;
+		max-width: 100%;
+		max-height: 100%;
+		object-fit: contain;
+		object-position: left center;
+		flex: 0 1 auto;
+		min-width: 0;
+		min-height: 0;
 	}
 
 	h2 {
@@ -122,14 +180,14 @@ const href = projectHref(project);
 			box-shadow var(--duration-base) var(--easing);
 	}
 
-	.card a:hover .more,
-	.card a:focus-visible .more {
+	a.inner:hover .more,
+	a.inner:focus-visible .more {
 		transform: scale(1.08) translateY(-2px);
 		box-shadow: 0 8px 18px rgba(30, 58, 138, 0.22);
 	}
 
 	@media (min-width: 40rem) {
-		.card a {
+		.card .inner {
 			grid-template-columns: 1fr 1fr;
 		}
 
@@ -138,8 +196,9 @@ const href = projectHref(project);
 			min-height: 100%;
 		}
 
-		.card--uniform a {
+		.card--uniform .inner {
 			height: 26rem;
+			grid-template-columns: 1fr 1fr;
 			grid-template-rows: 1fr;
 		}
 
