@@ -62,7 +62,6 @@ const { data } = project;
 			data.galleries.map((gallery) => (
 				<section class="page-shell page-shell--cards gallery-block">
 					{gallery.title && <h2>{gallery.title}</h2>}
-					{gallery.description && <h3>{gallery.description}</h3>}
 					<ProjectGallery images={gallery.images} imageScale={gallery.imageScale} uniform={gallery.uniform} />
 				</section>
 			))
