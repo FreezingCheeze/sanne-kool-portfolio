@@ -12,11 +12,16 @@ tools:
   - Branding
   - Webdesign
 galleries:
-  - images:
+  - title: Website
+    imageScale: 1.8
+    images:
       - src: ../../assets/projects/foodblog/website.jpg
         alt: Homepage-ontwerp van de foodblog.
+  - title: Logo's, Designs en Concepten
+    imageScale: 1.8
+    images:
       - src: ../../assets/projects/foodblog/logo-en-identiteit.jpg
         alt: Logo en visuele identiteit van de foodblog.
 ---
 
-Tijdens het tweede leerjaar van mijn studie heb ik gewerkt aan een project voor een foodblog. Voor dit project heb ik een nieuw logo ontworpen, een website ontwikkeld en een recept voor gezond snoep uitgewerkt. Het doel was om een aantrekkelijke en samenhangende visuele identiteit te creëren die past bij het concept van een gezonde foodblog.
+Tijdenss het tweede leerjaar van mijn studie heb ik gewerkt aan een project voor een foodblog. Voor dit project heb ik een nieuw logo ontworpen, een website ontwikkeld en een recept voor gezond snoep uitgewerkt. Het doel was om een aantrekkelijke en samenhangende visuele identiteit te creëren die past bij het concept van een gezonde foodblog.
