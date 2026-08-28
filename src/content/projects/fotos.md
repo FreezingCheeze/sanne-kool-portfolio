@@ -13,6 +13,7 @@ tools:
   - Adobe Photoshop
 galleries:
   - title: Sluitertijd
+    imageScale: 1.8
     images:
       - src: ../../assets/projects/fotos/sluitertijd-1.jpg
         alt: Foto gemaakt met een creatieve sluitertijd, zonder nabewerking.
