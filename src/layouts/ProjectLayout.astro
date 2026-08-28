@@ -7,6 +7,7 @@ import ProjectGallery from '../components/ProjectGallery.astro';
 import type { CollectionEntry } from 'astro:content';
 import { render } from 'astro:content';
 import type { ImageMetadata } from 'astro';
+import { splitProjectBody } from '../lib/projects';
 
 interface Props {
 	project: CollectionEntry<'projects'>;
@@ -16,6 +17,8 @@ const { project } = Astro.props;
 const { Content } = await render(project);
 const { data } = project;
 const showCards = data.cards.length > 0;
+const { intro, afterTitle, afterParagraphs } = splitProjectBody(project.body);
+const showAfterword = showCards && Boolean(afterTitle) && afterParagraphs.length > 0;
 const backHref = data.parent
 	? `/projects/${data.parent}/`
 	: `/${data.category === 'opleiding' ? 'opleiding-mediavormgeving' : data.category}/`;
@@ -32,7 +35,13 @@ const backHref = data.parent
 			<p class="eyebrow">{data.client ?? data.category}{data.year ? ` · ${data.year}` : ''}</p>
 			<h1>{data.title}</h1>
 			<div class="lede">
-				<Content />
+				{
+					showAfterword ? (
+						intro.map((paragraph) => <p>{paragraph}</p>)
+					) : (
+						<Content />
+					)
+				}
 			</div>
 			{
 				data.tools.length > 0 && (
@@ -78,6 +87,7 @@ const backHref = data.parent
 								summary: card.summary,
 								image: card.image as ImageMetadata,
 								imageAlt: card.imageAlt,
+								href: card.href,
 							}}
 							uniformHeight
 						/>
@@ -105,6 +115,17 @@ const backHref = data.parent
 					</video>
 				</section>
 			))
+		}
+
+		{
+			showAfterword && (
+				<section class="page-shell page-shell--cards afterword">
+					<h2>{afterTitle}</h2>
+					{afterParagraphs.map((paragraph, index) => (
+						<p class={index === 0 ? 'afterword-lead' : undefined}>{paragraph}</p>
+					))}
+				</section>
+			)
 		}
 
 		<div class="page-shell page-shell--cards back">
@@ -155,8 +176,25 @@ const backHref = data.parent
 		max-width: none;
 	}
 
-	.lede :global(h2) {
+	.lede :global(h2),
+	.lede h2 {
 		margin-top: var(--space-2xl);
+	}
+
+	.afterword {
+		padding-bottom: var(--space-3xl);
+		font-size: var(--font-size-sm);
+		font-weight: var(--font-weight-regular);
+		color: var(--color-text-on-dark);
+	}
+
+	.afterword h2 {
+		margin-top: 0;
+		margin-bottom: var(--space-md);
+	}
+
+	.afterword-lead {
+		font-weight: var(--font-weight-medium);
 	}
 
 	.body {

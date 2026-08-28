@@ -13,60 +13,35 @@ tools:
   - Webdesign
   - Advertenties
   - Wayfinding
-relatedLabel: Bekijk de plattegronden
-relatedHref: /projects/smeeing-plattegronden/
-galleries:
+cards:
   - title: Plattegronden
-    images:
-      - src: ../../assets/projects/smeeing-mobility/plattegrond-voorbeeld.jpg
-        alt: Voorbeeld van een ontruimingsplattegrond.
+    summary: Tijdens mijn stage heb ik tussen alle opdrachten door plattegronden gemaakt voor elke afdeling.
+    image: ../../assets/projects/smeeing-mobility/plattegrond-voorbeeld.jpg
+    imageAlt: Voorbeeld van een ontruimingsplattegrond.
+    href: /projects/smeeing-plattegronden/
   - title: Wegwijs borden
-    images:
-      - src: ../../assets/projects/smeeing-mobility/wegwijs-borden.jpg
-        alt: Nieuwe wegwijsborden voor de showroom van Auto Smeeing.
+    summary: Voor de showroom van Auto Smeeing heb ik nieuwe wegwijs borden gemaakt. Deze waren aan vervanging toe. Nieuwe volgorde, kleuren en dikte van de lijnen in de plaatjes waren niet gelijk.
+    image: ../../assets/projects/smeeing-mobility/wegwijs-borden.jpg
+    imageAlt: Nieuwe wegwijsborden voor de showroom van Auto Smeeing.
   - title: Banner hek
-    images:
-      - src: ../../assets/projects/smeeing-mobility/banner-hek.jpg
-        alt: Minimalistische banner voor het hek op Koningsweg 8.
+    summary: Voor het hek op koningsweg 8 mocht er een banner gemaakt worden. Dit moest minimalistisch maar duidelijk zijn.
+    image: ../../assets/projects/smeeing-mobility/banner-hek.jpg
+    imageAlt: Minimalistische banner voor het hek op Koningsweg 8.
   - title: Krantenadvertentie
-    images:
-      - src: ../../assets/projects/smeeing-mobility/krantenadvertentie.jpg
-        alt: Krantenadvertentie voor de opening van Bike Totaal Smeeing in De Bilt.
+    summary: Bike Totaal Smeeing heeft een nieuw filiaal geopend in de Bilt. Voor deze opening is er een advertentie geplaatst in de krant van de Bilt. Deze heb ik mogen maken.
+    image: ../../assets/projects/smeeing-mobility/krantenadvertentie.jpg
+    imageAlt: Krantenadvertentie voor de opening van Bike Totaal Smeeing in De Bilt.
   - title: Stella inruilen
-    images:
-      - src: ../../assets/projects/smeeing-mobility/stella-inruilen.jpg
-        alt: Website-ontwerp voor stellainruilen.nl.
+    summary: Stella is failliet verklaart. Hierdoor ontstaan er veel vragen bij klanten. Waaronder waar moet ik nu heen voor onderhoud? Heb ik nog garantie? En kan ik hem inruilen voor een andere fiets?
+    image: ../../assets/projects/smeeing-mobility/stella-inruilen.jpg
+    imageAlt: Website-ontwerp voor stellainruilen.nl.
   - title: De kinderfiets
-    images:
-      - src: ../../assets/projects/smeeing-mobility/de-kinderfiets.jpg
-        alt: Nieuw webdesign voor dekinderfiets.nl.
+    summary: De bedrijfsleider van Smeeing Mobility heeft een nieuwe webshop gemaakt voor kinderfietsen. Deze website zat prima in elkaar, maar het was nog niet helemaal zoals hij het voor zich had.
+    image: ../../assets/projects/smeeing-mobility/de-kinderfiets.jpg
+    imageAlt: Nieuw webdesign voor dekinderfiets.nl.
 ---
 
 In het derde leerjaar van mijn studie heb ik stage gelopen bij Smeeing Mobility. Hier heb ik hele verschillende opdrachten gemaakt, uitingen die ik anders waarschijnlijk nooit aan was begonnen.
-
-## Plattegronden
-
-Tijdens mijn stage heb ik tussen alle opdrachten door plattegronden gemaakt voor elke afdeling.
-
-## Wegwijs borden
-
-Voor de showroom van Auto Smeeing heb ik nieuwe wegwijs borden gemaakt. Deze waren aan vervanging toe. Nieuwe volgorde, kleuren en dikte van de lijnen in de plaatjes waren niet gelijk.
-
-## Banner hek
-
-Voor het hek op koningsweg 8 mocht er een banner gemaakt worden. Dit moest minimalistisch maar duidelijk zijn.
-
-## Kranten advertentie
-
-Bike Totaal Smeeing heeft een nieuw filiaal geopend in de Bilt. Voor deze opening is er een advertentie geplaatst in de krant van de Bilt. Deze heb ik mogen maken.
-
-## Stella inruilen
-
-Stella is failliet verklaart. Hierdoor ontstaan er veel vragen bij klanten. Waaronder waar moet ik nu heen voor onderhoud? Heb ik nog garantie? En kan ik hem inruilen voor een andere fiets?
-
-## De kinderfiets
-
-De bedrijfsleider van Smeeing Mobility heeft een nieuwe webshop gemaakt voor kinderfietsen. Deze website zat prima in elkaar, maar het was nog niet helemaal zoals hij het voor zich had.
 
 ## Wat vindt Sylvester?
 
