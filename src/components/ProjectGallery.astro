@@ -5,16 +5,17 @@ import type { ImageMetadata } from 'astro';
 interface Props {
 	images: Array<{ src: ImageMetadata; alt: string }>;
 	imageScale?: number;
+	uniform?: boolean;
 }
 
-const { images, imageScale = 1 } = Astro.props;
+const { images, imageScale = 1, uniform = false } = Astro.props;
 const canCycle = images.length > 1;
 const slideWidthRem = 23 * imageScale;
 ---
 
 {
 	images.length > 0 && (
-		<div class="gallery" data-gallery style={`--slide-width: ${slideWidthRem}rem`}>
+		<div class:list={['gallery', { 'gallery--uniform': uniform }]} data-gallery style={`--slide-width: ${slideWidthRem}rem`}>
 			{
 				canCycle && (
 					<button type="button" class="nav nav--prev" data-gallery-prev aria-label="Vorige afbeeldingen">
@@ -150,6 +151,23 @@ const slideWidthRem = 23 * imageScale;
 	.gallery :global(img) {
 		width: 100%;
 		height: auto;
+	}
+
+	.gallery--uniform .slide {
+		flex: 0 0 auto;
+		width: auto;
+	}
+
+	.gallery--uniform figure {
+		width: max-content;
+		height: var(--slide-width, 23rem);
+	}
+
+	.gallery--uniform :global(img) {
+		display: block;
+		width: auto;
+		height: 100%;
+		max-width: none;
 	}
 
 	.nav[hidden] {

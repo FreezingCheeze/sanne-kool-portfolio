@@ -36,6 +36,7 @@ const projects = defineCollection({
 					z.object({
 						title: z.string().optional(),
 						imageScale: z.number().positive().default(1),
+						uniform: z.boolean().default(false),
 						images: z.array(
 							z.object({
 								src: image(),

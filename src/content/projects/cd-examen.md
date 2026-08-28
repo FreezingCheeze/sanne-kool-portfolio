@@ -14,6 +14,7 @@ tools:
   - Adobe Photoshop
 galleries:
   - title: Huisstijl en logo
+    uniform: true
     images:
       - src: ../../assets/projects/cd-examen/huisstijl-1.jpg
         alt: Onderdelen van de vernieuwde huisstijl.
