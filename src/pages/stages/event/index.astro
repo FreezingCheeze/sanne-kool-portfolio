@@ -23,7 +23,7 @@ const projects = (await getListedProjects('stages')).filter(
 			opgedaan en hoe deze hebben bijgedragen aan mijn ontwikkeling.
 		</p>
 	</section>
-	<section class="page-shell page-shell--wide cards">
+	<section class="page-shell page-shell--cards cards">
 		{projects.map((project) => <ProjectCard project={project} />)}
 	</section>
 </BaseLayout>
