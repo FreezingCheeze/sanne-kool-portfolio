@@ -55,7 +55,8 @@ import hu from '../../assets/brands/hogeschool-utrecht.png';
 	}
 
 	.block {
-		display: grid;
+		display: flex;
+		flex-direction: column;
 		gap: var(--space-md);
 		text-decoration: none;
 		color: var(--color-text);
@@ -65,7 +66,8 @@ import hu from '../../assets/brands/hogeschool-utrecht.png';
 		background: var(--color-bg-warm);
 	}
 
-	.block:hover {
+	.block:hover,
+	.block:focus-visible {
 		color: var(--color-text);
 		box-shadow: var(--shadow-soft);
 	}
@@ -81,12 +83,32 @@ import hu from '../../assets/brands/hogeschool-utrecht.png';
 	}
 
 	.more {
+		margin-top: auto;
+		align-self: flex-start;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 2.5rem;
+		padding: 0.4rem 0.9rem;
+		background: #ffffff;
+		color: var(--color-panel);
 		font-size: var(--font-size-xs);
-		letter-spacing: 0.08em;
+		letter-spacing: 0.06em;
 		text-transform: uppercase;
 		font-weight: var(--font-weight-medium);
-		border-bottom: 1px solid currentColor;
+		border-radius: var(--radius-md);
 		width: fit-content;
+		transform-origin: center;
+		transition:
+			transform var(--duration-base) var(--easing),
+			box-shadow var(--duration-base) var(--easing);
+	}
+
+	.block:hover .more,
+	.block:focus-visible .more {
+		color: var(--color-panel);
+		transform: scale(1.08) translateY(-2px);
+		box-shadow: 0 8px 18px rgba(30, 58, 138, 0.22);
 	}
 
 	@media (min-width: 48rem) {
