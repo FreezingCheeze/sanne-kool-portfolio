@@ -46,12 +46,15 @@ const projects = defineCollection({
 				.array(
 					z.object({
 						title: z.string().optional(),
+						layout: z.enum(['carousel', 'titled']).default('carousel'),
 						imageScale: z.number().positive().default(1),
 						uniform: z.boolean().default(false),
 						images: z.array(
 							z.object({
 								src: image(),
 								alt: z.string(),
+								title: z.string().optional(),
+								text: z.string().optional(),
 							}),
 						),
 					}),

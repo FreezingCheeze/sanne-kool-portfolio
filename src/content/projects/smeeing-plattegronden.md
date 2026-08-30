@@ -10,49 +10,82 @@ listed: false
 order: 71
 parent: smeeing-mobility
 client: Smeeing Mobility
-relatedLabel: Terug naar Smeeing Mobility
-relatedHref: /projects/smeeing-mobility/
 galleries:
   - title: Industrieweg 34
+    layout: titled
     images:
-      - src: ../../assets/projects/smeeing-plattegronden/basisplattegrond.jpg
+      - src: ../../assets/projects/smeeing-plattegronden/industrieweg-34-basis.jpg
         alt: Basisplattegrond van Industrieweg 34.
-      - src: ../../assets/projects/smeeing-plattegronden/ontruiming-industrieweg-34.jpg
+        title: Basisplattegrond
+        text: |
+          Als eerst heb ik een basisplattegrond gemaakt van het gebouw. Hierbij heb ik ook gekeken naar de nooddeuren en welke kant de deuren open gaan.
+      - src: ../../assets/projects/smeeing-plattegronden/industrieweg-34-ontruiming.jpg
         alt: Ontruimingsplattegrond van Industrieweg 34.
+        title: Ontruimingsplattegrond        
+        text: |
+          Hierna heb ik alle brandblussers, brandslangen en alarmen toegevoegd. Als laatste heb ik een looproute gemaakt naar de dichtstbijzijnde nooduitgang.
       - src: ../../assets/projects/smeeing-plattegronden/industrieweg-34-begane-grond.jpg
         alt: Begane grond van Industrieweg 34.
-      - src: ../../assets/projects/smeeing-plattegronden/industrieweg-34-verdieping.jpg
+        title: Begane grond
+      - src: ../../assets/projects/smeeing-plattegronden/industrieweg-34-verdieping-1.jpg
         alt: Eerste verdieping van Industrieweg 34.
-  - title: Bike Totaal en Auto Smeeing
+        title: Eerste verdieping
+  - title: Koningsweg 16
+    layout: titled
     images:
-      - src: ../../assets/projects/smeeing-plattegronden/bike-totaal-1.jpg
+      - src: ../../assets/projects/smeeing-plattegronden/koningsweg-16-basis.jpg
         alt: Plattegrond voor Bike Totaal Smeeing.
-      - src: ../../assets/projects/smeeing-plattegronden/bike-totaal-2.jpg
+        title: Basisplattegrond
+        text: |
+          Hetzelfde heb ik gedaan met Koningsweg 16, Bike Totaal Smeeing en Auto Smeeing.
+      - src: ../../assets/projects/smeeing-plattegronden/koningsweg-16-ontruiming.jpg
         alt: Tweede plattegrond voor Bike Totaal Smeeing.
-      - src: ../../assets/projects/smeeing-plattegronden/auto-smeeing-1.jpg
+        title: Ontruimingsplattegrond
+      - src: ../../assets/projects/smeeing-plattegronden/koningsweg-16-bike-totaal.jpg
         alt: Plattegrond voor Auto Smeeing.
-      - src: ../../assets/projects/smeeing-plattegronden/auto-smeeing-2.jpg
-        alt: Tweede plattegrond voor Auto Smeeing.
-  - title: Overige locaties
+        title: Bike Totaal
+      - src: ../../assets/projects/smeeing-plattegronden/koningsweg-16-auto-smeeing.jpg
+        alt: Plattegrond voor Auto Smeeing.
+        title: Auto Smeeing
+  - title: Koningsweg 14
+    layout: titled
     images:
-      - src: ../../assets/projects/smeeing-plattegronden/koningsweg-16-1.jpg
+      - src: ../../assets/projects/smeeing-plattegronden/koningsweg-14-basis.jpg
+        alt: Tweede plattegrond voor Auto Smeeing.
+        title: Basisplattegrond
+        text: |
+          Hetzelfde heb ik gedaan met Koningsweg 14, Yourlease en Auto Smeeing.
+      - src: ../../assets/projects/smeeing-plattegronden/koningsweg-14-begane-grond.jpg
         alt: Plattegrond van Koningsweg 16.
-      - src: ../../assets/projects/smeeing-plattegronden/koningsweg-16-2.jpg
+        title: Ontruimingsplattegrond
+      - src: ../../assets/projects/smeeing-plattegronden/koningsweg-14-ontruiming.jpg
         alt: Tweede plattegrond van Koningsweg 16.
-      - src: ../../assets/projects/smeeing-plattegronden/koningsweg-14-1.jpg
+        title: Begane grond
+      - src: ../../assets/projects/smeeing-plattegronden/koningsweg-14-verdieping-1.jpg
         alt: Plattegrond van Koningsweg 14.
-      - src: ../../assets/projects/smeeing-plattegronden/koningsweg-14-2.jpg
+        title: Eerste verdieping
+  - title: Industrieweg 20
+    layout: titled
+    images:
+      - src: ../../assets/projects/smeeing-plattegronden/industrieweg-20-basis.jpg
         alt: Tweede plattegrond van Koningsweg 14.
-      - src: ../../assets/projects/smeeing-plattegronden/industrieweg-20.jpg
+        title: Basisplattegrond
+        text: |
+          Hetzelfde heb ik gedaan met Industrieweg 20, de werkplaats.
+      - src: ../../assets/projects/smeeing-plattegronden/industrieweg-20-ontruiming.jpg
         alt: Plattegrond van Industrieweg 20.
-      - src: ../../assets/projects/smeeing-plattegronden/koningsweg-18b-1.jpg
+        title: Ontruimingsplattegrond
+  - title: Koningsweg 18B
+    layout: titled
+    images:
+      - src: ../../assets/projects/smeeing-plattegronden/koningsweg-18b-basis.jpg
         alt: Plattegrond van Koningsweg 18B.
-      - src: ../../assets/projects/smeeing-plattegronden/koningsweg-18b-2.jpg
+        title: Basisplattegrond
+        text: |
+          Hetzelfde heb ik gedaan met Koningsweg 18B, Aflever plaats en werkplaats.
+      - src: ../../assets/projects/smeeing-plattegronden/koningsweg-18b-ontruiming.jpg
         alt: Tweede plattegrond van Koningsweg 18B.
+        title: Ontruimingsplattegrond
 ---
 
 Tijdens mijn stage heb ik tussen alle opdrachten door plattegronden gemaakt voor elke afdeling.
-
-Als eerst heb ik een basisplattegrond gemaakt van het gebouw. Hierbij heb ik ook gekeken naar de nooddeuren en welke kant de deuren open gaan. Hierna heb ik alle brandblussers, brandslangen en alarmen toegevoegd. Als laatste heb ik een looproute gemaakt naar de dichtstbijzijnde nooduitgang.
-
-Hetzelfde heb ik gedaan met Koningsweg 16 (Bike Totaal Smeeing en Auto Smeeing), Koningsweg 14 (Yourlease en Auto Smeeing), Industrieweg 20 (de werkplaats) en Koningsweg 18B.

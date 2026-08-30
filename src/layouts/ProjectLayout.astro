@@ -4,6 +4,7 @@ import BaseLayout from './BaseLayout.astro';
 import ButtonLink from '../components/ButtonLink.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import ProjectGallery from '../components/ProjectGallery.astro';
+import TitledGallery from '../components/TitledGallery.astro';
 import type { CollectionEntry } from 'astro:content';
 import { render } from 'astro:content';
 import type { ImageMetadata } from 'astro';
@@ -98,10 +99,14 @@ const backHref = data.parent
 
 		{
 			!showCards &&
-				data.galleries.map((gallery) => (
+				data.galleries.map((gallery, index) => (
 					<section class="page-shell page-shell--cards gallery-block">
 						{gallery.title && <h2>{gallery.title}</h2>}
-						<ProjectGallery images={gallery.images} imageScale={gallery.imageScale} uniform={gallery.uniform} />
+						{gallery.layout === 'titled' ? (
+							<TitledGallery id={`titled-gallery-${index}`} images={gallery.images} />
+						) : (
+							<ProjectGallery images={gallery.images} imageScale={gallery.imageScale} uniform={gallery.uniform} />
+						)}
 					</section>
 				))
 		}
