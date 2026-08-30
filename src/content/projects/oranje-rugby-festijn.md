@@ -13,18 +13,21 @@ tools:
   - Eventdesign
   - Online banners
 galleries:
-  - title: Online banners
+  - title: Online Banners
+    layout: stack
     images:
       - src: ../../assets/projects/oranje-rugby-festijn/sfeer-1.jpg
         alt: Sfeerbeeld van het Oranje Rugby Festijn.
       - src: ../../assets/projects/oranje-rugby-festijn/sfeer-2.jpg
         alt: Tweede sfeerbeeld van het evenement.
+      - src: ../../assets/projects/oranje-rugby-festijn/online-banner.jpg
+        alt: Online banner voor de promotie van het feest.
+  - title: Posters
+    images:
       - src: ../../assets/projects/oranje-rugby-festijn/banner-1.jpg
         alt: Bannerontwerp voor het Oranje Rugby Festijn.
       - src: ../../assets/projects/oranje-rugby-festijn/banner-2.jpg
         alt: Tweede bannerontwerp voor het evenement.
-      - src: ../../assets/projects/oranje-rugby-festijn/online-banner.jpg
-        alt: Online banner voor de promotie van het feest.
 ---
 
 Tijdens mijn stage bij het Oranje Rugbyfestijn 2026 in Spakenburg heb ik ervaring opgedaan binnen de organisatie van een groot evenement. Het feest vindt plaats tijdens Koningsnacht en trekt jaarlijks ongeveer 5.000 bezoekers.

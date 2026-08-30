@@ -6,16 +6,18 @@ interface Props {
 	images: Array<{ src: ImageMetadata; alt: string }>;
 	imageScale?: number;
 	uniform?: boolean;
+	stack?: boolean;
 }
 
-const { images, imageScale = 1, uniform = false } = Astro.props;
-const canCycle = images.length > 1;
+const { images, imageScale = 1, uniform = false, stack = false } = Astro.props;
+const canCycle = !stack && images.length > 1;
 const slideWidthRem = 23 * imageScale;
+const isWide = (image: ImageMetadata) => image.width / image.height >= 2;
 ---
 
 {
 	images.length > 0 && (
-		<div class:list={['gallery', { 'gallery--uniform': uniform }]} data-gallery style={`--slide-width: ${slideWidthRem}rem`}>
+		<div class:list={['gallery', { 'gallery--uniform': uniform, 'gallery--stack': stack }]} data-gallery style={`--slide-width: ${slideWidthRem}rem`}>
 			{
 				canCycle && (
 					<button type="button" class="nav nav--prev" data-gallery-prev aria-label="Vorige afbeeldingen">
@@ -26,19 +28,28 @@ const slideWidthRem = 23 * imageScale;
 				)
 			}
 			<ul class="track" data-gallery-track>
-				{images.map((image, index) => (
-					<li class="slide" data-slide>
-						<figure>
-							<Image
-								src={image.src}
-								alt={image.alt}
-								widths={[240, 368, 560, 800]}
-								sizes={`(max-width: 30rem) 80vw, ${slideWidthRem}rem`}
-								loading={index < 4 ? 'eager' : 'lazy'}
-							/>
-						</figure>
-					</li>
-				))}
+				{images.map((image, index) => {
+					const wide = stack && isWide(image.src);
+					return (
+						<li class:list={['slide', { 'slide--wide': wide, 'slide--contained': stack && !wide }]} data-slide>
+							<figure>
+								<Image
+									src={image.src}
+									alt={image.alt}
+									widths={stack ? [480, 768, 1100, 1600, 2000] : [240, 368, 560, 800]}
+									sizes={
+										stack
+											? wide
+												? '(max-width: 75rem) 92vw, 75rem'
+												: `(max-width: 30rem) 92vw, ${slideWidthRem}rem`
+											: `(max-width: 30rem) 80vw, ${slideWidthRem}rem`
+									}
+									loading={index < 4 ? 'eager' : 'lazy'}
+								/>
+							</figure>
+						</li>
+					);
+				})}
 			</ul>
 			{
 				canCycle && (
@@ -168,6 +179,22 @@ const slideWidthRem = 23 * imageScale;
 		width: auto;
 		height: 100%;
 		max-width: none;
+	}
+
+	.gallery--stack .track {
+		flex-direction: column;
+		align-items: flex-start;
+		overflow: visible;
+	}
+
+	.gallery--stack .slide--wide {
+		flex: 0 0 auto;
+		width: 100%;
+	}
+
+	.gallery--stack .slide--contained {
+		flex: 0 0 auto;
+		width: min(var(--slide-width, 23rem), 100%);
 	}
 
 	.nav[hidden] {
