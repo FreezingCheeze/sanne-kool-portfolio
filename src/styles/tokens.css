@@ -3,22 +3,16 @@
 
 :root {
 	--color-bg: #3B82F6;
-	--color-primary: var(--color-bg);
 	--color-secondary: #1e3a8a;
 	--color-bg-muted: #93C5FD;
 	--color-bg-warm: #dbeafe;
 	--color-panel: var(--color-bg);
-	--color-panel-soft: #7dd3fc;
 	--color-text: #0f172a;
-	--color-text-muted: #1e3a8a;
 	--color-text-on-dark: #ffffff;
 	--color-accent: #93c5fd;
-	--color-accent-strong: var(--color-bg);
-	--color-accent-dark: #1e40af;
 	--color-border: rgba(255, 255, 255, 0.45);
 	--color-border-strong: #ffffff;
 	--color-focus: #1e3a8a;
-	--color-overlay: rgba(15, 23, 42, 0.45);
 
 	--font-family: Avenir, 'Avenir Next', 'Avenir Next LT Pro', 'Segoe UI', Helvetica, Arial, sans-serif;
 	--font-size-xs: clamp(0.75rem, 0.7rem + 0.2vw, 0.8125rem);
@@ -29,7 +23,6 @@
 	--font-size-xl: clamp(1.5rem, 1.2rem + 1.2vw, 2.125rem);
 	--font-size-2xl: clamp(2rem, 1.4rem + 2vw, 3.125rem);
 	--font-size-3xl: clamp(2.4rem, 1.6rem + 2.8vw, 3.6rem);
-	--font-weight-light: 300;
 	--font-weight-regular: 400;
 	--font-weight-medium: 600;
 	--font-weight-semibold: 600;
@@ -39,7 +32,6 @@
 	--letter-spacing-wide: 0.14em;
 	--letter-spacing-nav: 0.04em;
 
-	--space-2xs: 0.25rem;
 	--space-xs: 0.5rem;
 	--space-sm: 0.75rem;
 	--space-md: 1rem;
@@ -50,34 +42,24 @@
 	--space-4xl: 6.5rem;
 
 	--content-width: 72rem;
-	--content-width-narrow: 42rem;
 	--content-width-wide: 86rem;
+	--content-width-project: 75rem;
+	--content-width-cards: 100rem;
 	--page-gutter: clamp(1rem, 4vw, 3rem);
 	--header-height: 5.25rem;
 
 	--border-width: 1px;
 	--border-width-strong: 2px;
-	--radius-sm: 4px;
 	--radius-md: 8px;
 	--radius-lg: 12px;
 	--shadow-soft: 0 12px 32px rgba(30, 58, 138, 0.18);
-	--shadow-focus: 0 0 0 3px rgba(255, 255, 255, 0.8);
 
-	--duration-fast: 150ms;
 	--duration-base: 250ms;
-	--duration-slow: 450ms;
 	--easing: cubic-bezier(0.22, 1, 0.36, 1);
-
-	--bp-sm: 40rem;
-	--bp-md: 48rem;
-	--bp-lg: 64rem;
-	--bp-xl: 90rem;
 }
 
 @media (prefers-reduced-motion: reduce) {
 	:root {
-		--duration-fast: 1ms;
 		--duration-base: 1ms;
-		--duration-slow: 1ms;
 	}
 }

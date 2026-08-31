@@ -10,7 +10,7 @@ import { site } from '../../data/site';
 		<p class="lede">Bekijk het curriculum vitae van Sanne Kool in de browser of download het als PDF.</p>
 		<div class="actions">
 			<ButtonLink href={site.cvPath} download>Bekijk PDF</ButtonLink>
-			<a class="download" href={site.cvPath} download="Sanne-Kool-CV.pdf">Download PDF</a>
+			<ButtonLink href={site.cvPath} download="Sanne-Kool-CV.pdf">Download PDF</ButtonLink>
 		</div>
 	</section>
 </BaseLayout>
@@ -22,11 +22,5 @@ import { site } from '../../data/site';
 		gap: var(--space-md);
 		align-items: center;
 		margin-top: var(--space-lg);
-	}
-
-	.download {
-		min-height: 2.75rem;
-		display: inline-flex;
-		align-items: center;
 	}
 </style>

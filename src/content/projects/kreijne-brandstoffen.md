@@ -6,7 +6,6 @@ year: 2025
 summary: Benieuwd naar de truien die ik voor Kreijne Brandstoffen heb ontworpen? Klik verder en bekijk hoe ik branding, stijl en draagbaarheid heb gecombineerd in één ontwerp.
 coverImage: ../../assets/projects/kreijne-brandstoffen/cover.jpg
 coverAlt: Truiontwerp voor Kreijne Brandstoffen.
-featured: true
 order: 100
 client: Kreijne Brandstoffen
 instagramUrl: https://www.instagram.com/peuthoogland/?hl=nl

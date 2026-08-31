@@ -6,7 +6,6 @@ year: 2025
 summary: Voor mijn examen heb ik een compleet biermerk ontwikkeld, van de visuele identiteit tot de uiteindelijke verpakking. Bekijk hoe ik mijn ideeën heb vertaald naar etiketten, een verpakking en een styleguide.
 coverImage: ../../assets/projects/examen/etiket-1.jpg
 coverAlt: Overzicht van bieretiketten voor het examenproject.
-featured: true
 order: 50
 client: Brouwers Baas
 tools:

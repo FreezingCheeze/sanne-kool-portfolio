@@ -1,5 +1,4 @@
 ---
-import { Image } from 'astro:assets';
 import BaseLayout from './BaseLayout.astro';
 import ButtonLink from '../components/ButtonLink.astro';
 import ProjectSocialLinks from '../components/ProjectSocialLinks.astro';
@@ -20,7 +19,7 @@ const { project } = Astro.props;
 const { Content } = await render(project);
 const { data } = project;
 const showCards = data.cards.length > 0;
-const { intro, afterTitle, afterParagraphs } = splitProjectBody(project.body);
+const { intro, afterTitle, afterParagraphs } = splitProjectBody(project.body ?? '');
 const showAfterword = Boolean(afterTitle) && afterParagraphs.length > 0;
 const afterwordLead = Boolean(afterParagraphs[0] && !/[.!?]$/.test(afterParagraphs[0]));
 const backHref = data.parent
@@ -35,7 +34,7 @@ const backHref = data.parent
 	canonicalPath={`/projects/${data.slug}/`}
 >
 	<article class="project">
-		<header class="page-shell page-shell--cards page-intro">
+		<header class="page-shell page-shell--project page-intro">
 			<p class="eyebrow">{data.client ?? data.category}{data.year ? ` · ${data.year}` : ''}</p>
 			<h1>{data.title}</h1>
 			<div class="lede">
@@ -63,7 +62,7 @@ const backHref = data.parent
 				data.instagramUrl ||
 				data.facebookUrl ||
 				(data.relatedHref && data.relatedLabel)) && (
-				<div class="page-shell page-shell--cards body social-row">
+				<div class="page-shell page-shell--project body social-row">
 					{
 						(data.instagramUrl || data.facebookUrl) && (
 							<ProjectSocialLinks
@@ -115,7 +114,7 @@ const backHref = data.parent
 		{
 			!showCards &&
 				data.galleries.map((gallery, index) => (
-					<section class="page-shell page-shell--cards gallery-block">
+					<section class="page-shell page-shell--project gallery-block">
 						{gallery.title && <h2>{gallery.title}</h2>}
 						{gallery.layout === 'titled' ? (
 							<TitledGallery id={`titled-gallery-${index}`} images={gallery.images} />
@@ -134,7 +133,7 @@ const backHref = data.parent
 
 		{
 			data.videos.map((video) => (
-				<section class="page-shell page-shell--cards gallery-block">
+				<section class="page-shell page-shell--project gallery-block">
 					{video.title && <h2>{video.title}</h2>}
 					<video class="project-video" controls playsinline preload="metadata" aria-label={video.alt}>
 						<source src={video.src} type="video/mp4" />
@@ -145,7 +144,7 @@ const backHref = data.parent
 
 		{
 			showAfterword && (
-				<section class="page-shell page-shell--cards afterword">
+				<section class="page-shell page-shell--project afterword">
 					<h2>{afterTitle}</h2>
 					{afterParagraphs.map((paragraph, index) => (
 						<p class={index === 0 && afterwordLead ? 'afterword-lead' : undefined}>{paragraph}</p>
@@ -154,7 +153,7 @@ const backHref = data.parent
 			)
 		}
 
-		<div class="page-shell page-shell--cards back">
+		<div class="page-shell page-shell--project back">
 			<ButtonLink href={backHref}>Terug naar overzicht</ButtonLink>
 		</div>
 	</article>
@@ -186,17 +185,6 @@ const backHref = data.parent
 		font-size: var(--font-size-xs);
 		letter-spacing: 0.04em;
 		text-transform: uppercase;
-	}
-
-	.hero-cover {
-		margin-bottom: var(--space-2xl);
-	}
-
-	.hero-cover :global(img) {
-		width: 100%;
-		height: auto;
-		border-radius: var(--radius-sm);
-		background: var(--color-bg-muted);
 	}
 
 	.lede {
@@ -255,25 +243,5 @@ const backHref = data.parent
 
 	.back {
 		padding-bottom: var(--space-4xl);
-	}
-
-	.cards {
-		display: grid;
-		gap: var(--space-xl);
-		padding-bottom: var(--space-4xl);
-	}
-
-	@media (min-width: 48rem) {
-		.cards {
-			grid-template-columns: 1fr;
-		}
-	}
-
-	.page-shell--cards {
-		width: min(75rem, 100% - var(--page-gutter) * 2);
-	}
-
-	.cards.page-shell--cards {
-		width: min(100rem, 100% - var(--page-gutter) * 2);
 	}
 </style>

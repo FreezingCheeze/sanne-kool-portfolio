@@ -2,17 +2,19 @@
 interface Props {
 	href: string;
 	external?: boolean;
-	download?: boolean;
+	download?: boolean | string;
 }
 
 const { href, external = false, download = false } = Astro.props;
+const downloadAttr = typeof download === 'string' ? download : undefined;
 ---
 
 <a
 	class="button-link"
 	href={href}
-	target={external || download ? '_blank' : undefined}
+	target={external || download === true ? '_blank' : undefined}
 	rel={external ? 'noreferrer noopener' : undefined}
+	download={downloadAttr}
 >
 	<slot />
 </a>
@@ -24,8 +26,8 @@ const { href, external = false, download = false } = Astro.props;
 		justify-content: center;
 		min-height: 2.75rem;
 		padding: 0.55rem 1.35rem;
-		border: var(--border-width-strong) solid #ffffff;
-		background: #ffffff;
+		border: var(--border-width-strong) solid var(--color-border-strong);
+		background: var(--color-border-strong);
 		color: var(--color-panel);
 		text-decoration: none;
 		font-size: var(--font-size-sm);
@@ -38,8 +40,8 @@ const { href, external = false, download = false } = Astro.props;
 	}
 
 	.button-link:hover {
-		background: #0f172a;
-		color: #ffffff;
-		border-color: #0f172a;
+		background: var(--color-text);
+		color: var(--color-text-on-dark);
+		border-color: var(--color-text);
 	}
 </style>

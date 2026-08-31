@@ -1,16 +1,12 @@
 ---
 import { navigation } from '../data/site';
+import { isCurrentPath } from '../lib/nav';
 
 interface Props {
 	currentPath: string;
 }
 
 const { currentPath } = Astro.props;
-
-function isCurrent(href: string, path: string) {
-	if (href === '/') return path === '/';
-	return path === href || path.startsWith(href);
-}
 ---
 
 <div class="mobile">
@@ -29,7 +25,7 @@ function isCurrent(href: string, path: string) {
 			{
 				navigation.map((item) => (
 					<li>
-						<a href={item.href} aria-current={isCurrent(item.href, currentPath) ? 'page' : undefined}>
+						<a href={item.href} aria-current={isCurrentPath(item.href, currentPath) ? 'page' : undefined}>
 							{item.label}
 						</a>
 					</li>

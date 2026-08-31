@@ -6,7 +6,6 @@ year: 2024
 summary: Benieuwd naar het programmaboekje dat ik voor Basic and Full Color heb ontworpen? Ontdek hoe ik heb gewerkt met vormgeving, kleurgebruik en lay-out om een overzichtelijk en aantrekkelijk eindresultaat te creëren.
 coverImage: ../../assets/projects/basic-and-full-color/cover.jpg
 coverAlt: Cover van het programmaboekje voor Basic & Full Color.
-featured: true
 order: 110
 client: Basic & Full Color
 tools:

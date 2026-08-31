@@ -102,14 +102,14 @@ p:last-child {
 	margin-bottom: 0;
 }
 
-	.skip-link {
+.skip-link {
 	position: absolute;
 	left: var(--space-md);
 	top: 0;
 	transform: translateY(-120%);
 	z-index: 1000;
 	background: var(--color-text);
-	color: #ffffff;
+	color: var(--color-text-on-dark);
 	padding: var(--space-sm) var(--space-md);
 	border-radius: var(--radius-md);
 	font-weight: var(--font-weight-medium);
@@ -130,15 +130,15 @@ p:last-child {
 }
 
 .page-shell--cards {
-	width: min(100rem, 100% - var(--page-gutter) * 2);
+	width: min(var(--content-width-cards), 100% - var(--page-gutter) * 2);
 }
 
-.page-shell--narrow {
-	width: min(var(--content-width-narrow), 100% - var(--page-gutter) * 2);
+.page-shell--project {
+	width: min(var(--content-width-project), 100% - var(--page-gutter) * 2);
 }
 
-.section {
-	padding-block: var(--space-3xl);
+.page-intro {
+	padding-block: var(--space-3xl) var(--space-xl);
 }
 
 .lede {
@@ -149,16 +149,62 @@ p:last-child {
 	width: 100%;
 }
 
-.page-intro {
-	padding-block: var(--space-3xl) var(--space-xl);
+.cards {
+	display: grid;
+	gap: var(--space-xl);
+	padding-bottom: var(--space-4xl);
 }
 
-.missing-note {
-	margin-top: var(--space-xl);
-	padding: var(--space-lg);
-	background: var(--color-bg-muted);
-	color: var(--color-text);
-	border-left: 3px solid var(--color-accent);
+.more {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 2.5rem;
+	padding: 0.4rem 0.9rem;
+	background: var(--color-border-strong);
+	color: var(--color-panel);
+	font-size: var(--font-size-xs);
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	font-weight: var(--font-weight-medium);
+	border-radius: var(--radius-md);
+	width: fit-content;
+	transform-origin: center;
+	transition:
+		transform var(--duration-base) var(--easing),
+		box-shadow var(--duration-base) var(--easing);
+}
+
+a:hover .more,
+a:focus-visible .more {
+	color: var(--color-panel);
+	transform: scale(1.08) translateY(-2px);
+	box-shadow: 0 8px 18px rgba(30, 58, 138, 0.22);
+}
+
+.zoom {
+	position: relative;
+	display: block;
+	width: 100%;
+	padding: 0;
+	border: 0;
+	background: transparent;
+	cursor: pointer;
+}
+
+.zoom::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: rgba(15, 23, 42, 0.35);
+	opacity: 0;
+	transition: opacity var(--duration-base) var(--easing);
+	pointer-events: none;
+}
+
+.zoom:hover::after,
+.zoom:focus-visible::after {
+	opacity: 1;
 }
 
 .visually-hidden {

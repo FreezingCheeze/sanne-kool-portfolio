@@ -6,7 +6,6 @@ year: 2024
 summary: Een project waarin branding en visuele identiteit centraal staan. Bekijk hoe ik voor het vak Corporate Design de huisstijl en het logo van Nacht van de Literatuur opnieuw heb vormgegeven tot een moderne en consistente uitstraling.
 coverImage: ../../assets/projects/cd-examen/cover.jpg
 coverAlt: Vernieuwd logo voor Nacht van de Literatuur.
-featured: true
 order: 40
 client: Nacht van de Literatuur
 tools:

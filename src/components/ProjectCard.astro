@@ -121,7 +121,7 @@ const isStatic = Boolean(card);
 	.media {
 		aspect-ratio: 4 / 3;
 		overflow: hidden;
-		background: #0f172a;
+		background: var(--color-text);
 	}
 
 	.media :global(img) {
@@ -147,29 +147,6 @@ const isStatic = Boolean(card);
 		left: var(--space-lg);
 		bottom: var(--space-lg);
 		margin: 0;
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		min-height: 2.5rem;
-		padding: 0.4rem 0.9rem;
-		background: #ffffff;
-		color: var(--color-panel);
-		font-size: var(--font-size-xs);
-		letter-spacing: 0.06em;
-		text-transform: uppercase;
-		font-weight: var(--font-weight-medium);
-		border-radius: var(--radius-md);
-		width: fit-content;
-		transform-origin: center;
-		transition:
-			transform var(--duration-base) var(--easing),
-			box-shadow var(--duration-base) var(--easing);
-	}
-
-	a.inner:hover .more,
-	a.inner:focus-visible .more {
-		transform: scale(1.08) translateY(-2px);
-		box-shadow: 0 8px 18px rgba(30, 58, 138, 0.22);
 	}
 
 	@media (min-width: 40rem) {

@@ -6,7 +6,6 @@ year: 2023
 summary: Een creatief project waarin fotografie, grafisch ontwerp en animatie samenkomen. Ontdek hoe ik de Vier Vrijheden van Roosevelt heb vertaald naar een visueel sterke poster en een geanimeerde banner.
 coverImage: ../../assets/projects/freebee/cover.jpg
 coverAlt: Posterontwerp voor het FreeBee-project over de Vier Vrijheden.
-featured: true
 order: 10
 tools:
   - Adobe Illustrator

@@ -81,7 +81,8 @@ const slides = await Promise.all(
 								{hasCopy && (
 									<>
 										{image.title && <h3 class="copy-title">{image.title}</h3>}
-										{paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+										{hasCopy &&
+											paragraphs?.map((paragraph) => <p>{paragraph}</p>)}
 									</>
 								)}
 							</div>
@@ -192,31 +193,6 @@ const slides = await Promise.all(
 	figure {
 		margin: 0;
 		background: transparent;
-	}
-
-	.zoom {
-		position: relative;
-		display: block;
-		width: 100%;
-		padding: 0;
-		border: 0;
-		background: transparent;
-		cursor: pointer;
-	}
-
-	.zoom::after {
-		content: '';
-		position: absolute;
-		inset: 0;
-		background: rgba(15, 23, 42, 0.35);
-		opacity: 0;
-		transition: opacity var(--duration-base) var(--easing);
-		pointer-events: none;
-	}
-
-	.zoom:hover::after,
-	.zoom:focus-visible::after {
-		opacity: 1;
 	}
 
 	.titled-gallery :global(img) {

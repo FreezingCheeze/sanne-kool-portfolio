@@ -6,7 +6,6 @@ year: 2025
 summary: Benieuwd naar de ontwerpen die ik voor de rugbyclub maak? Bekijk de collectie posters, flyers en Instagram-posts waarmee ik bijdraag aan de uitstraling en communicatie van de club.
 coverImage: ../../assets/projects/rugbyclub-spakenburg/cover.jpg
 coverAlt: Instagram-ontwerp voor Rugbyclub Spakenburg.
-featured: true
 order: 90
 client: Rugbyclub Spakenburg
 instagramUrl: https://www.instagram.com/rcspakenburg_dames/?hl=nl

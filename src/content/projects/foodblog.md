@@ -6,7 +6,6 @@ year: 2024
 summary: Een creatief project waarin branding, webdesign en gezonde voeding samenkomen. Ontdek hoe ik voor een foodblog een nieuw logo, een aantrekkelijke website en een gezond snoeprecept heb ontwikkeld tot één sterk en samenhangend concept.
 coverImage: ../../assets/projects/foodblog/cover.jpg
 coverAlt: Website-ontwerp voor een foodblog.
-featured: true
 order: 30
 tools:
   - Branding

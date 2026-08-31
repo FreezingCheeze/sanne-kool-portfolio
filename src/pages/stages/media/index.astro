@@ -25,17 +25,3 @@ const projects = (await getListedProjects('stages')).filter(
 		{projects.map((project) => <ProjectCard project={project} />)}
 	</section>
 </BaseLayout>
-
-<style>
-	.cards {
-		display: grid;
-		gap: var(--space-xl);
-		padding-bottom: var(--space-4xl);
-	}
-
-	@media (min-width: 48rem) {
-		.cards {
-			grid-template-columns: 1fr;
-		}
-	}
-</style>

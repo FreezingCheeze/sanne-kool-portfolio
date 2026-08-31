@@ -1,16 +1,10 @@
 ---
 import { site } from '../data/site';
-
-interface Props {
-	compact?: boolean;
-}
-
-const { compact = false } = Astro.props;
 ---
 
-<ul class:list={['socials', compact && 'compact']}>
+<ul class="socials">
 	<li>
-		<a class="instagram" href={site.socials.instagram.href} rel="noreferrer noopener" target="_blank">
+		<a href={site.socials.instagram.href} rel="noreferrer noopener" target="_blank">
 			<span class="visually-hidden">Instagram van Sanne Kool (opent in nieuw tabblad)</span>
 			<svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
 				<defs>
@@ -30,7 +24,7 @@ const { compact = false } = Astro.props;
 		</a>
 	</li>
 	<li>
-		<a class="linkedin" href={site.socials.linkedin.href} rel="noreferrer noopener" target="_blank">
+		<a href={site.socials.linkedin.href} rel="noreferrer noopener" target="_blank">
 			<span class="visually-hidden">LinkedIn van Sanne Kool (opent in nieuw tabblad)</span>
 			<svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
 				<path
@@ -64,15 +58,5 @@ const { compact = false } = Astro.props;
 	a:hover {
 		opacity: 0.85;
 		transform: translateY(-1px);
-	}
-
-	.compact a {
-		width: 2.25rem;
-		height: 2.25rem;
-	}
-
-	.compact svg {
-		width: 22px;
-		height: 22px;
 	}
 </style>

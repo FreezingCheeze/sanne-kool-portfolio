@@ -6,7 +6,6 @@ year: 2025
 summary: Bij Smeeing Mobility heb ik mijn creatieve vaardigheden in de praktijk gebracht en gewerkt aan diverse visuele en digitale projecten. Ontdek hoe deze stage heeft bijgedragen aan mijn ontwikkeling als mediavormgever.
 coverImage: ../../assets/projects/smeeing-mobility/cover.jpg
 coverAlt: Webdesign gemaakt tijdens de stage bij Smeeing Mobility.
-featured: true
 order: 70
 client: Smeeing Mobility
 tools:

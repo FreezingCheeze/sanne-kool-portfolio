@@ -6,7 +6,6 @@ year: 2024
 summary: "Van pure cameratechniek tot krachtige beeldbewerking: in dit project laat ik zien hoe mijn fotografische vaardigheden zich hebben ontwikkeld. Bekijk hoe ik met sluitertijd, contrast en Photoshop meer sfeer, dynamiek en expressie aan mijn foto’s heb toegevoegd."
 coverImage: ../../assets/projects/fotos/cover.jpg
 coverAlt: Fotografisch werk van Sanne Kool uit de opleiding Mediavormgeving.
-featured: true
 order: 20
 tools:
   - Fotografie

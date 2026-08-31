@@ -6,7 +6,6 @@ year: 2026
 summary: Benieuwd naar mijn stage bij het Oranje Rugbyfestijn? Ontdek hoe ik van dichtbij heb meegemaakt wat er komt kijken bij de organisatie van een groot evenement met zo’n 5.000 bezoekers.
 coverImage: ../../assets/projects/oranje-rugby-festijn/cover.jpg
 coverAlt: Visuele uiting voor het Oranje Rugby Festijn.
-featured: true
 order: 80
 client: Oranje Rugby Festijn
 tools:

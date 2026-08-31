@@ -6,7 +6,6 @@ year: 2023
 summary: Creativiteit, praktijkervaring en professionele groei kwamen samen tijdens mijn stage bij Wulterkens. Ontdek de projecten waaraan ik heb gewerkt en hoe deze stage heeft bijgedragen aan mijn ontwikkeling als mediavormgever.
 coverImage: ../../assets/projects/wulterkens/cover.jpg
 coverAlt: Flyerontwerp gemaakt tijdens de stage bij Wulterkens.
-featured: true
 order: 60
 client: Wulterkens Customized Wear
 tools:
