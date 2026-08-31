@@ -15,7 +15,7 @@ import { site } from '../data/site';
 	.site-footer {
 		margin-top: auto;
 		border-top: 0;
-		padding-block: var(--space-xl);
+		padding-block: var(--space-2xl);
 		background: var(--color-bg);
 		color: var(--color-text-on-dark);
 	}
@@ -29,13 +29,13 @@ import { site } from '../data/site';
 		width: min(var(--content-width-wide), 100% - var(--page-gutter) * 2);
 		margin-inline: auto;
 		display: grid;
-		gap: var(--space-md);
+		gap: var(--space-lg);
 		align-items: center;
 	}
 
 	.brand {
 		margin: 0;
-		font-size: var(--font-size-xs);
+		font-size: var(--font-size-sm);
 		letter-spacing: var(--letter-spacing-wide);
 		font-weight: var(--font-weight-medium);
 	}
@@ -43,7 +43,7 @@ import { site } from '../data/site';
 	.copy {
 		margin: 0;
 		color: var(--color-accent);
-		font-size: var(--font-size-sm);
+		font-size: var(--font-size-base);
 	}
 
 	:global(body.is-home) .copy {
@@ -51,13 +51,7 @@ import { site } from '../data/site';
 	}
 
 	.inner :global(.socials a:hover) {
-		color: var(--color-text-on-dark);
 		opacity: 0.85;
-	}
-
-	:global(body.is-home) .inner :global(.socials a:hover) {
-		color: var(--color-accent-dark);
-		opacity: 1;
 	}
 
 	@media (min-width: 48rem) {
