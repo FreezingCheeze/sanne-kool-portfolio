@@ -3,7 +3,7 @@ title: Rugbyclub Spakenburg
 slug: rugbyclub-spakenburg
 category: vrijwerk
 year: 2025
-summary: Bekijk de collectie posters, flyers en Instagram-posts waarmee ik bijdraag aan de uitstraling en communicatie van Rugbyclub Spakenburg.
+summary: Benieuwd naar de ontwerpen die ik voor de rugbyclub maak? Bekijk de collectie posters, flyers en Instagram-posts waarmee ik bijdraag aan de uitstraling en communicatie van de club.
 coverImage: ../../assets/projects/rugbyclub-spakenburg/cover.jpg
 coverAlt: Instagram-ontwerp voor Rugbyclub Spakenburg.
 featured: true

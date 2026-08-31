@@ -3,7 +3,7 @@ title: Basic & Full Color
 slug: basic-and-full-color
 category: vrijwerk
 year: 2024
-summary: Programmaboekje voor het lustrumconcert van popkoor Basic & Full Color, ontworpen met een jongere en frissere uitstraling.
+summary: Benieuwd naar het programmaboekje dat ik voor Basic and Full Color heb ontworpen? Ontdek hoe ik heb gewerkt met vormgeving, kleurgebruik en lay-out om een overzichtelijk en aantrekkelijk eindresultaat te creëren.
 coverImage: ../../assets/projects/basic-and-full-color/cover.jpg
 coverAlt: Cover van het programmaboekje voor Basic & Full Color.
 featured: true

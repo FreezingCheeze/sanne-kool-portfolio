@@ -3,7 +3,7 @@ title: Kreijne Brandstoffen
 slug: kreijne-brandstoffen
 category: vrijwerk
 year: 2025
-summary: Bekijk hoe ik branding, stijl en draagbaarheid heb gecombineerd in truiontwerpen voor Kreijne Brandstoffen.
+summary: Benieuwd naar de truien die ik voor Kreijne Brandstoffen heb ontworpen? Klik verder en bekijk hoe ik branding, stijl en draagbaarheid heb gecombineerd in één ontwerp.
 coverImage: ../../assets/projects/kreijne-brandstoffen/cover.jpg
 coverAlt: Truiontwerp voor Kreijne Brandstoffen.
 featured: true
