@@ -24,6 +24,12 @@ galleries:
         alt: Derde Instagram-post voor de rugbyclub.
       - src: ../../assets/projects/rugbyclub-spakenburg/instapost-4.jpg
         alt: Vierde Instagram-post voor de rugbyclub.
+      - src: ../../assets/projects/rugbyclub-spakenburg/flyer-1.jpg
+        alt: Flyer voor een wedstrijd of evenement van de rugbyclub.
+  - title: Flyers en Posters
+    uniform: true
+    imageScale: 1.8
+    images:
       - src: ../../assets/projects/rugbyclub-spakenburg/instapost-5.jpg
         alt: Vijfde Instagram-post voor de rugbyclub.
       - src: ../../assets/projects/rugbyclub-spakenburg/instapost-6.jpg
@@ -32,10 +38,6 @@ galleries:
         alt: Zevende Instagram-post voor de rugbyclub.
       - src: ../../assets/projects/rugbyclub-spakenburg/instapost-8.jpg
         alt: Achtste Instagram-post voor de rugbyclub.
-  - title: Flyers en posters
-    images:
-      - src: ../../assets/projects/rugbyclub-spakenburg/flyer-1.jpg
-        alt: Flyer voor een wedstrijd of evenement van de rugbyclub.
       - src: ../../assets/projects/rugbyclub-spakenburg/flyer-2.jpg
         alt: Tweede flyer voor Rugbyclub Spakenburg.
       - src: ../../assets/projects/rugbyclub-spakenburg/poster-1.jpg
