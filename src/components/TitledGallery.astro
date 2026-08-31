@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 
 interface Props {
@@ -13,13 +13,19 @@ interface Props {
 }
 
 const { id, images } = Astro.props;
+const slides = await Promise.all(
+	images.map(async (image, index) => {
+		const full = await getImage({ src: image.src, width: 2400 });
+		return { ...image, index, lightboxSrc: full.src };
+	}),
+);
 ---
 
 {
 	images.length > 0 && (
 		<div class="titled-gallery" data-titled-gallery>
 			<div class="tabs" role="tablist" aria-label="Afbeeldingen">
-				{images.map((image, index) => {
+				{slides.map((image, index) => {
 					const selected = index === 0;
 					return (
 						<button
@@ -37,7 +43,7 @@ const { id, images } = Astro.props;
 				})}
 			</div>
 			<div class="panels">
-				{images.map((image, index) => {
+				{slides.map((image, index) => {
 					const selected = index === 0;
 					const paragraphs = image.text
 						?.split(/\n\s*\n/)
@@ -53,13 +59,23 @@ const { id, images } = Astro.props;
 							hidden={!selected}
 						>
 							<figure>
-								<Image
-									src={image.src}
-									alt={image.alt}
-									widths={[480, 768, 1100, 1600]}
-									sizes="(max-width: 48rem) 92vw, 55rem"
-									loading={index === 0 ? 'eager' : 'lazy'}
-								/>
+								<button
+									type="button"
+									class="zoom"
+									data-lightbox-open
+									data-lightbox-group={id}
+									data-lightbox-src={image.lightboxSrc}
+									data-lightbox-alt={image.alt}
+									aria-label={`Vergroot: ${image.alt}`}
+								>
+									<Image
+										src={image.src}
+										alt={image.alt}
+										widths={[480, 768, 1100, 1600]}
+										sizes="(max-width: 48rem) 92vw, 55rem"
+										loading={index === 0 ? 'eager' : 'lazy'}
+									/>
+								</button>
 							</figure>
 							<div class:list={['copy', { 'copy--filled': hasCopy }]}>
 								{hasCopy && (
@@ -176,6 +192,31 @@ const { id, images } = Astro.props;
 	figure {
 		margin: 0;
 		background: transparent;
+	}
+
+	.zoom {
+		position: relative;
+		display: block;
+		width: 100%;
+		padding: 0;
+		border: 0;
+		background: transparent;
+		cursor: pointer;
+	}
+
+	.zoom::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: rgba(15, 23, 42, 0.35);
+		opacity: 0;
+		transition: opacity var(--duration-base) var(--easing);
+		pointer-events: none;
+	}
+
+	.zoom:hover::after,
+	.zoom:focus-visible::after {
+		opacity: 1;
 	}
 
 	.titled-gallery :global(img) {

@@ -1,0 +1,199 @@
+<dialog class="lightbox" data-lightbox aria-label="Vergrote afbeelding">
+	<button type="button" class="icon close" data-lightbox-close aria-label="Afbeelding sluiten">
+		<svg viewBox="0 0 24 24" aria-hidden="true">
+			<path d="M6 6 18 18M18 6 6 18"></path>
+		</svg>
+	</button>
+	<button type="button" class="icon prev" data-lightbox-prev aria-label="Vorige afbeelding">
+		<svg viewBox="0 0 24 24" aria-hidden="true">
+			<path d="M15 5 8 12l7 7"></path>
+		</svg>
+	</button>
+	<img data-lightbox-image alt="" />
+	<button type="button" class="icon next" data-lightbox-next aria-label="Volgende afbeelding">
+		<svg viewBox="0 0 24 24" aria-hidden="true">
+			<path d="m9 5 7 7-7 7"></path>
+		</svg>
+	</button>
+</dialog>
+
+<script>
+	function initLightbox() {
+		const dialog = document.querySelector<HTMLDialogElement>('[data-lightbox]');
+		const image = dialog?.querySelector<HTMLImageElement>('[data-lightbox-image]');
+		const closeBtn = dialog?.querySelector<HTMLButtonElement>('[data-lightbox-close]');
+		const prevBtn = dialog?.querySelector<HTMLButtonElement>('[data-lightbox-prev]');
+		const nextBtn = dialog?.querySelector<HTMLButtonElement>('[data-lightbox-next]');
+		if (!dialog || !image || !closeBtn || !prevBtn || !nextBtn) return;
+
+		let items: HTMLButtonElement[] = [];
+		let index = 0;
+		let lastTrigger: HTMLButtonElement | null = null;
+		let pointer = { x: 0, y: 0, dragged: false };
+
+		const show = (i: number) => {
+			index = (i + items.length) % items.length;
+			const trigger = items[index];
+			image.src = trigger.dataset.lightboxSrc || '';
+			image.alt = trigger.dataset.lightboxAlt || '';
+			const multiple = items.length > 1;
+			prevBtn.hidden = !multiple;
+			nextBtn.hidden = !multiple;
+		};
+
+		const open = (trigger: HTMLButtonElement) => {
+			const group = trigger.dataset.lightboxGroup || '';
+			items = [...document.querySelectorAll<HTMLButtonElement>('[data-lightbox-open]')].filter(
+				(button) => (button.dataset.lightboxGroup || '') === group,
+			);
+			lastTrigger = trigger;
+			const start = Math.max(0, items.indexOf(trigger));
+			show(start);
+			dialog.showModal();
+		};
+
+		const close = () => {
+			if (!dialog.open) return;
+			dialog.close();
+		};
+
+		dialog.addEventListener('close', () => {
+			image.removeAttribute('src');
+			lastTrigger?.focus();
+		});
+
+		document.addEventListener('pointerdown', (event) => {
+			if (!(event.target as HTMLElement | null)?.closest('[data-lightbox-open]')) return;
+			pointer = { x: event.clientX, y: event.clientY, dragged: false };
+		});
+
+		document.addEventListener('pointermove', (event) => {
+			if (Math.hypot(event.clientX - pointer.x, event.clientY - pointer.y) > 8) {
+				pointer.dragged = true;
+			}
+		});
+
+		document.addEventListener('click', (event) => {
+			const trigger = (event.target as HTMLElement | null)?.closest<HTMLButtonElement>('[data-lightbox-open]');
+			if (!trigger) return;
+			event.preventDefault();
+			if (pointer.dragged) {
+				pointer.dragged = false;
+				return;
+			}
+			open(trigger);
+		});
+
+		closeBtn.addEventListener('click', close);
+		prevBtn.addEventListener('click', () => show(index - 1));
+		nextBtn.addEventListener('click', () => show(index + 1));
+
+		dialog.addEventListener('click', (event) => {
+			if (event.target === dialog) close();
+		});
+
+		dialog.addEventListener('keydown', (event) => {
+			if (!dialog.open || items.length < 2) return;
+			if (event.key === 'ArrowLeft') {
+				event.preventDefault();
+				show(index - 1);
+			}
+			if (event.key === 'ArrowRight') {
+				event.preventDefault();
+				show(index + 1);
+			}
+		});
+	}
+
+	initLightbox();
+</script>
+
+<style>
+	.lightbox {
+		box-sizing: border-box;
+		position: fixed;
+		inset: 0;
+		width: 100vw;
+		height: 100dvh;
+		max-width: none;
+		max-height: none;
+		margin: 0;
+		padding: 0.5rem 3.5rem;
+		overflow: hidden;
+		border: 0;
+		background: rgba(15, 23, 42, 0.92);
+		color: #ffffff;
+	}
+
+	.lightbox::backdrop {
+		background: rgba(15, 23, 42, 0.92);
+	}
+
+	.lightbox[open] {
+		display: grid;
+		place-items: center;
+	}
+
+	img {
+		display: block;
+		max-width: 100%;
+		max-height: calc(100dvh - 1rem);
+		width: auto;
+		height: auto;
+		object-fit: contain;
+		box-shadow: var(--shadow-soft);
+	}
+
+	.icon {
+		position: absolute;
+		z-index: 1;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.75rem;
+		height: 2.75rem;
+		padding: 0;
+		border: var(--border-width-strong) solid #ffffff;
+		background: #ffffff;
+		color: var(--color-panel);
+		border-radius: var(--radius-md);
+		cursor: pointer;
+	}
+
+	.icon[hidden] {
+		display: none;
+	}
+
+	.icon:hover {
+		background: #0f172a;
+		color: #ffffff;
+		border-color: #0f172a;
+	}
+
+	.close {
+		top: 0.5rem;
+		right: 0.5rem;
+	}
+
+	.prev {
+		left: var(--space-md);
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	.next {
+		right: var(--space-md);
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	.icon svg {
+		width: 1.25rem;
+		height: 1.25rem;
+		fill: none;
+		stroke: currentColor;
+		stroke-width: 2;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+	}
+</style>
