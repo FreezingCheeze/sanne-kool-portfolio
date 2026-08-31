@@ -20,7 +20,8 @@ const { Content } = await render(project);
 const { data } = project;
 const showCards = data.cards.length > 0;
 const { intro, afterTitle, afterParagraphs } = splitProjectBody(project.body);
-const showAfterword = showCards && Boolean(afterTitle) && afterParagraphs.length > 0;
+const showAfterword = Boolean(afterTitle) && afterParagraphs.length > 0;
+const afterwordLead = Boolean(afterParagraphs[0] && !/[.!?]$/.test(afterParagraphs[0]));
 const backHref = data.parent
 	? `/projects/${data.parent}/`
 	: `/${data.category === 'opleiding' ? 'opleiding-mediavormgeving' : data.category}/`;
@@ -145,7 +146,7 @@ const backHref = data.parent
 				<section class="page-shell page-shell--cards afterword">
 					<h2>{afterTitle}</h2>
 					{afterParagraphs.map((paragraph, index) => (
-						<p class={index === 0 ? 'afterword-lead' : undefined}>{paragraph}</p>
+						<p class={index === 0 && afterwordLead ? 'afterword-lead' : undefined}>{paragraph}</p>
 					))}
 				</section>
 			)
