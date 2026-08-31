@@ -26,29 +26,29 @@ galleries:
         alt: Derde Instagram-post voor de rugbyclub.
       - src: ../../assets/projects/rugbyclub-spakenburg/instapost-4.jpg
         alt: Vierde Instagram-post voor de rugbyclub.
-      - src: ../../assets/projects/rugbyclub-spakenburg/flyer-1.jpg
+      - src: ../../assets/projects/rugbyclub-spakenburg/instapost-5.jpg
         alt: Flyer voor een wedstrijd of evenement van de rugbyclub.
   - title: Flyers en Posters
     uniform: true
     imageScale: 1.8
     images:
-      - src: ../../assets/projects/rugbyclub-spakenburg/instapost-5.jpg
+      - src: ../../assets/projects/rugbyclub-spakenburg/flyer-poster-1.jpg
         alt: Vijfde Instagram-post voor de rugbyclub.
-      - src: ../../assets/projects/rugbyclub-spakenburg/instapost-6.jpg
+      - src: ../../assets/projects/rugbyclub-spakenburg/flyer-poster-2.jpg
         alt: Zesde Instagram-post voor de rugbyclub.
-      - src: ../../assets/projects/rugbyclub-spakenburg/instapost-7.jpg
+      - src: ../../assets/projects/rugbyclub-spakenburg/flyer-poster-3.jpg
         alt: Zevende Instagram-post voor de rugbyclub.
-      - src: ../../assets/projects/rugbyclub-spakenburg/instapost-8.jpg
+      - src: ../../assets/projects/rugbyclub-spakenburg/flyer-poster-4.jpg
         alt: Achtste Instagram-post voor de rugbyclub.
-      - src: ../../assets/projects/rugbyclub-spakenburg/flyer-2.jpg
+      - src: ../../assets/projects/rugbyclub-spakenburg/flyer-poster-5.jpg
         alt: Tweede flyer voor Rugbyclub Spakenburg.
-      - src: ../../assets/projects/rugbyclub-spakenburg/poster-1.jpg
+      - src: ../../assets/projects/rugbyclub-spakenburg/flyer-poster-6.jpg
         alt: Poster voor Rugbyclub Spakenburg.
-      - src: ../../assets/projects/rugbyclub-spakenburg/poster-2.jpg
+      - src: ../../assets/projects/rugbyclub-spakenburg/flyer-poster-7.jpg
         alt: Tweede poster voor Rugbyclub Spakenburg.
-      - src: ../../assets/projects/rugbyclub-spakenburg/poster-3.jpg
+      - src: ../../assets/projects/rugbyclub-spakenburg/flyer-poster-8.jpg
         alt: Derde poster voor Rugbyclub Spakenburg.
-      - src: ../../assets/projects/rugbyclub-spakenburg/poster-4.jpg
+      - src: ../../assets/projects/rugbyclub-spakenburg/flyer-poster-9.jpg
         alt: Vierde poster voor Rugbyclub Spakenburg.
 ---
 
