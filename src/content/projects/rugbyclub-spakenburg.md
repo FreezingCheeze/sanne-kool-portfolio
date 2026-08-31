@@ -9,12 +9,14 @@ coverAlt: Instagram-ontwerp voor Rugbyclub Spakenburg.
 featured: true
 order: 90
 client: Rugbyclub Spakenburg
-externalUrl: https://www.instagram.com/rcspakenburg_dames/?hl=nl
+instagramUrl: https://www.instagram.com/rcspakenburg_dames/?hl=nl
+facebookUrl: https://www.facebook.com/profile.php?id=100090557120213
 tools:
   - Social media
   - Posterontwerp
 galleries:
   - title: Instaposts
+    imageScale: 1.5
     images:
       - src: ../../assets/projects/rugbyclub-spakenburg/instapost-1.jpg
         alt: Instagram-post voor Rugbyclub Spakenburg.

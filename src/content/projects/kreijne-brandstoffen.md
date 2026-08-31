@@ -9,7 +9,8 @@ coverAlt: Truiontwerp voor Kreijne Brandstoffen.
 featured: true
 order: 100
 client: Kreijne Brandstoffen
-externalUrl: https://www.instagram.com/peuthoogland/?hl=nl
+instagramUrl: https://www.instagram.com/peuthoogland/?hl=nl
+facebookUrl: https://www.facebook.com/peutkreijne
 tools:
   - Kledingontwerp
   - Branding

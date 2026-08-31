@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import BaseLayout from './BaseLayout.astro';
 import ButtonLink from '../components/ButtonLink.astro';
+import ProjectSocialLinks from '../components/ProjectSocialLinks.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import ProjectGallery from '../components/ProjectGallery.astro';
 import TitledGallery from '../components/TitledGallery.astro';
@@ -56,8 +57,20 @@ const backHref = data.parent
 		</header>
 
 		{
-			(data.externalUrl || (data.relatedHref && data.relatedLabel)) && (
-				<div class="page-shell page-shell--cards body">
+			(data.externalUrl ||
+				data.instagramUrl ||
+				data.facebookUrl ||
+				(data.relatedHref && data.relatedLabel)) && (
+				<div class="page-shell page-shell--cards body social-row">
+					{
+						(data.instagramUrl || data.facebookUrl) && (
+							<ProjectSocialLinks
+								title={data.title}
+								instagramUrl={data.instagramUrl}
+								facebookUrl={data.facebookUrl}
+							/>
+						)
+					}
 					{
 						data.externalUrl && (
 							<p>
@@ -210,6 +223,17 @@ const backHref = data.parent
 	.body {
 		margin-bottom: var(--space-2xl);
 		font-size: var(--font-size-md);
+	}
+
+	.social-row {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: var(--space-md);
+	}
+
+	.social-row p {
+		margin: 0;
 	}
 
 	.gallery-block {

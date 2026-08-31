@@ -19,6 +19,8 @@ const projects = defineCollection({
 			client: z.string().optional(),
 			tools: z.array(z.string()).default([]),
 			externalUrl: z.string().optional(),
+			instagramUrl: z.string().optional(),
+			facebookUrl: z.string().optional(),
 			parent: z.string().optional(),
 			relatedLabel: z.string().optional(),
 			relatedHref: z.string().optional(),
